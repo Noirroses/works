@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body{
+            margin: 0;
+        }
+
+        .container{
+            min-width: 500px;
+            /*考虑浏览器宽度小于左右两个固定宽度之和的极限情况*/
+            padding: 20px;
+            background-color: #eee;
+            border: 1px solid #999;
+            overflow: auto;
+            position: relative;
+            /*一种清除浮动的技巧是使用“overflow”属性。在具有浮动元素的父容器中设置“overflow”的属性值为“auto”，这样父容器就会有一个高度存在*/
+        }
+        .left-team{
+            padding: 20px;
+            width:158px ;
+            float: left;
+            border: 1px solid #999;
+            background-color: #ffffff;
+        }
+        .center-info{
+            padding: 20px;
+            border: 1px solid #999;
+            margin-left: 218px;
+            margin-right: 158px;
+            background-color: #ffffff;
+            position: absolute;
+        }
+        .right-person{
+            width: 78px;
+            padding: 20px;
+            border: 1px solid #999;
+            float: right;
+            background-color: #ffffff;
+        }
+
+
+        .teamlogo{
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
+        .teamname{
+            display: inline-block;
+            font-family: "Microsoft YaHei", SimSun, SimHei;
+            font-size: 16px;
+            color: #333333;
+            float: left;
+            padding-left: 10px;
+        }
+
+
+        .center-info h2{
+            font-family: "Microsoft YaHei", SimSun, SimHei;
+            color: #000000;
+        }
+        .center-info p{
+            font-family: "Microsoft YaHei", SimSun, SimHei;
+            font-size: 16px;
+            color: #333333;
+        }
+
+
+
+        .plogo{
+            width: 80px;
+            height: 80px;
+            margin: 5px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-team">
+            <img class="teamlogo" src="img/people01.png">
+            <div class="teamname">Onload</div>
+        </div>
+        <div class="center-info">
+            <h2>Hello!我们是Onload！</h2>
+            <p>记得早先少年时 大家诚诚恳恳 说一句 是一句
+                清早上火车站 长街黑暗无行人 卖豆浆的小店冒着热气
+                从前的日色变得慢 车，马，邮件都慢 一生只够爱一个人
+                从前的锁也好看 钥匙精美有样子 你锁了 人家就懂了 </p>
+            <p>记得早先少年时 大家诚诚恳恳 说一句 是一句
+                清早上火车站 长街黑暗无行人 卖豆浆的小店冒着热气
+                从前的日色变得慢 车，马，邮件都慢 一生只够爱一个人
+                从前的锁也好看 钥匙精美有样子 你锁了 人家就懂了 </p>
+        </div>
+        <div class="right-person">
+            <img class="plogo" src="img/people01.png">
+            <img class="plogo" src="img/people02.jpg">
+            <img class="plogo" src="img/people03.png">
+            <img class="plogo" src="img/people04.png">
+        </div>
+    </div>
+</body>
+</html>

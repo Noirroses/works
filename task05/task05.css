@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    #headerright{
+        display: none;
+    }
+    #right-info{
+        display: none;
+    }
+    #content5{
+        display: none;
+    }
+
+}
+
+
+/*header-start*/
+#header{
+    width: 100%;
+    height: 50px;
+    background-color: #333333;
+}
+#headerleft{
+    width: 200px;
+    height: 42px;
+    float: left;
+    position: relative;
+    padding-top: 8px;
+    padding-left: 30px;
+}
+#headerright{
+    width: 18%;
+    height: 34px;
+    float: right;
+    padding-top: 16px;
+    padding-right: 20px;
+}
+#headerlul{
+    list-style: none
+}
+#headerlul li{
+    float: left;
+    font-family: "Microsoft YaHei", SimSun, SimHei;
+    font-size: 16px;
+    margin-right: 10px;
+}
+#headerlul li a{
+    color: #ffffff;
+    text-decoration: none;
+}
+#headerlul li a:hover{
+    color: #269abc;
+}
+/*header-end*/
+
+/*container-start*/
+
+#left-content,#right-info{
+    padding: 20px
+}
+#content1,#content2,#content3,#content4,#content5{
+    width:100%;
+    height:auto;
+    background-color: #ffffff;
+    margin-bottom:10px;
+    padding: 15px;
+    font-family: "Microsoft YaHei", SimSun, SimHei;
+    font-size: 15px;
+    color: #333333;
+    line-height:25px;
+}
+h1,h2{
+    font-family: sans-serif;
+
+}
+
+#container{
+    min-width: 20%;
+    background-color:#dedede;
+    overflow:hidden;
+}
+
+#left-content{
+    min-width: 100px;
+    width: auto;
+    float: left;
+    margin-right: 370px;
+}
+
+
+#content1 img{
+    width: 300px;
+    height:auto;
+    max-height: 200px;
+    float: left;
+    margin:15px 15px 0 15px;
+    object-fit: cover;
+    object-position: -10px 0px;
+}
+#content1 a,#content2 a{
+    color: #269abc;
+    text-decoration: none;
+}
+#content1 a:hover,#content2 a:hover{
+    color: darkgray;
+    text-decoration: none;
+}
+#content2 img{
+    width: 400px;
+    height:auto;
+    max-height: 200px;
+    float: left;
+    margin:15px 15px 0 15px;
+    object-fit: cover;
+    object-position: -10px 0px;
+}
+#content2 ul{
+    list-style: none;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+#content3 ul{
+    list-style: none;
+    display: inline-block;
+}
+#content3 li{
+    width: 130px;
+    height: 130px;
+    border: 1px solid dimgrey;
+    padding: 10px;
+    text-align: center;
+    float: left;
+    margin: 10px;
+}
+#content3 img{
+    width: 120px;
+    height: auto;
+}
+
+#content4 ol{
+    margin:0 0 20px 30px;
+}
+#content4 table{
+    width: 100%;
+}
+#content4 table th{
+    background-color: #333333;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+}
+#content4 table th,
+#content4 table td{
+    padding: 5px;
+}
+#content4 table tr:last-child{
+    background-color: #bbb;
+    font-weight: bold;
+}
+
+#right-info{
+    width:300px;
+    position: absolute;
+    right: 25px;
+}
+#content5{
+    width: 100%;
+    height:600px;
+    background-color: #ffffff;
+    position: relative;
+}
+#content5 h2{
+    border-left: 3px solid silver;
+    padding-left: 10px;
+}
+#content5 div{
+    margin-top: 20px;
+}
+#content5 span{
+    font-size: 13px;
+    color: #bbb;
+    margin-left: 41%;
+}
+#content5 div label{
+    display: inline-block;
+    text-align: right;
+    margin-right: 5%;
+    width: 35%;
+    vertical-align:top;
+}
+#content5 textarea{
+    height: 100px;
+    width: 55%;
+    margin-top: 6px;
+}
+.submitbtn{
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    color: #fff;
+    height: 45px;
+    background-color: blue;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: .5s;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px darkblue;
+}
+.submitbtn:hover{
+    background-color: darkblue;
+}
+/*container-end*/
+
+/*footer-start*/
+#footer{
+    width: 100%;
+    height: 40px;
+    background-color: #333333;
+    text-align: center;
+    padding-top: 15px;
+    font-family: "Microsoft YaHei", SimSun, SimHei;
+    font-size: 16px;
+    color: #ffffff
+}
