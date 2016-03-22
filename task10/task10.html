@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>FlexBox布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing: border-box;
+        }
+
+        .flex-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /*沿着主轴线平均分布，第一个在最开始位置，最后一个在最后一个位置*/
+            align-items: center;
+            /*沿着侧轴线居中分布*/
+        }
+
+        [class*='flex-item']{
+            width: 150px;
+            border: 1px solid #f00;
+            margin-top: 20px;
+            order: 2;
+        }
+        .flex-item01{
+            height: 120px;
+        }
+        .flex-item02{
+            height: 100px;
+        }
+        .flex-item03{
+            height:40px;
+        }
+        .flex-item04{
+            height: 200px;
+            border: 1px solid #0f0;
+        }
+
+        @media only screen and (max-width: 640px) {
+            .flex-container{
+                align-items: flex-start;
+                /*沿着测轴线，靠近测轴起点的位置*/
+            }
+            .flex-item04{
+                order: 1;
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-item01"></div>
+        <div class="flex-item02"></div>
+        <div class="flex-item03"></div>
+        <div class="flex-item04"></div>
+    </div>
+</body>
+</html>
