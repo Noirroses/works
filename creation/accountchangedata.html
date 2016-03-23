@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://www5.rayvision.com/index.action -->
+<html lang="cn">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+        青岛市创意设计产业科技服务平台
+    </title>
+    <link href="customer/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="customer/ace.min.css">
+    <link rel="stylesheet" href="customer.css">
+    <script src="customer/jquery-1.10.2.min.js"></script>
+</head>
+<body class="navbar-fixed">
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <script type="text/javascript">
+        function createNameDiv() {
+            var name = "Noirroses";
+            if (name.length > 10) {
+                var width = 130 + (name.length - 10) * 6;
+                $("#cln").attr("style", "width:" + width + "px");
+            }
+        }
+
+        jQuery(document).ready(function() {
+            createNameDiv();
+            isScroll();
+        });
+
+        function isScroll() {
+            if (typeof ($(".min-width-class").attr("id")) == "undefined") {//未定义最小宽度的属性  则要移除main里面的最小宽度属性
+                $("#containerminwidth").css("min-width", "100%");
+            } else {
+                //$("#containerminwidth").css("min-width","0px");
+                $("#containerminwidth").css("min-width",
+                        ($(".min-width-class").width() + 257) + "px");
+            }
+        }
+        $(window).resize(function() {
+            isScroll();
+        });
+        //添加初始化表格宽度方法
+        jQuery.fn.initTableWidth = function(closWith) {
+            var nodes = $(this).find("thead").find("th");
+            var tableWith = 0;
+            if (closWith && nodes)
+                $.each(nodes, function(index, node) {
+                    if (index < closWith.length) {
+                        $(node).parents("div").css("overflow", "auto");
+                        $(node).css("width", closWith[index] + 'px');
+                        tableWith = tableWith + closWith[index];
+                    } else {
+                        tableWith = tableWith + 80;
+                    }
+                });
+            $(this).css("width", tableWith);
+        }
+        //扩展jquery ui dialog 扩展标题支持html标签
+        $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+            _title : function(title) {
+                var $title = this.options.title || '&nbsp;';
+                if (("title_html" in this.options)
+                        && this.options.title_html == true)
+                    title.html($title);
+                else
+                    title.text($title);
+            }
+        }));
+        //添加统一确认框样式
+        function confirmMsg(title, msg, func) {
+            var div = $("#confirmmsg");
+            if (div.length < 1) {
+                div = $('<div>', {
+                    'id' : 'confirmmsg',
+                    'class' : 'hide'
+                });
+                $("body").append(div);
+            }
+            var html;
+            if (!title)
+                html = "<div class='widget-header'><h4 class='smaller'>Are you sure?</h4></div>";
+            else
+                html = "<div class='widget-header'><h4 class='smaller'>"
+                + title + "</h4></div>";
+            $(div).empty();
+            $(div).append("<p>" + msg + "</p>");
+            var test = $(div).removeClass('hide').dialog({
+                resizable : false,
+                modal : true,
+                title : html,
+                title_html : true,
+                buttons : [ {
+                    html : "确定",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        $(this).dialog("close");
+                        if ($.isFunction(func)) {
+                            func(true);
+                        }
+                        $(this).dialog("close");
+                    }
+                }, {
+                    html : "取消",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        if ($.isFunction(func)) {
+                            func(false);
+                        }
+                        $(this).dialog("close");
+                    }
+                } ]
+            });
+        }
+
+        //添加统一添加弹出框
+        function alertMsg(msg, title) {
+            var div = $("#alertmsg");
+            if (div.length < 1) {
+                div = $('<div>', {
+                    'id' : 'alertmsg',
+                    'class' : 'hide'
+                });
+                $("body").append(div);
+            }
+            var html = "<div class='widget-header'><h4 class='smaller'>Warning！</h4></div>";
+            if (title)
+                html = "<div class='widget-header'><h4 class='smaller'>"+title+"</h4></div>";
+            $(div).empty();
+            $(div).append("<p>" + msg + "</p>");
+            $(div).removeClass('hide').dialog({
+                resizable : false,
+                modal : true,
+                title : html,
+                title_html : true,
+                buttons : [ {
+                    html : "确定",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        $(this).dialog("close");
+                    }
+                } ]
+            });
+        }
+
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="" class="navbar-brand">
+                <small>
+                    <!-- <img src="/img/logo_white.png" style="vertical-align: top;" height="27px" width="240" /> -->
+                    <img src="customer/images/logo.png">
+                </small>
+            </a>
+            <!-- /.brand -->
+        </div>
+        <!-- /.navbar-header -->
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav top-right-nav">
+                <li>
+                    <a href=" ">
+                        <i class="fa fa-sign-out"></i>退出
+                    </a>
+                </li>
+            </ul>
+            <!-- /.ace-nav -->
+        </div>
+        <!-- /.navbar-header -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<div class="main-container" id="main-container">
+
+
+    <div class="main-container-inner">
+        <div class="sidebar sidebar-fixed" id="sidebar">
+            <ul class="nav nav-list">
+                <li>
+                    <a href="javascript:void(0);" style="height: auto; border-right: none; color: #585858; background-color: #fff; cursor: default;">
+				<span class="menu-text">
+
+					<table class="nav-list-ul">
+                        <tbody><tr><td height="10px"></td></tr>
+                        <tr class="nav-list-username">
+                            <td colspan="2">个人账号中心</td>
+                        </tr>
+                        <tr>
+                            <td class="first-col">管理支付</td> <!-- <i class="icon-tag"></i> -->
+                            <td>交互接收</td>
+                        </tr>
+
+                        <tr><td height="10px"></td></tr>
+                        </tbody></table>
+				</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="account.html" class="nav-list-dashboard">
+                        <i class="icon-dashboard"> <img src ="customer/images/iii.jpg" style="margin: -8px 6px 0 6px;" height="18" width="20"></i>
+                        <span class="menu-text">账号中心</span>
+                    </a>
+                </li>
+
+
+
+
+                <li >
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-cloud"> <img src="customer/images/iii2.jpg" style="margin: -7px 6px 0 6px;" height="15" width="20"></i>
+                        <span class="menu-text">云渲染管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li><a href="accountcp.html">
+                            <i class="icon-double-angle-right"></i>渲染流程
+                        </a></li>
+                        <li><a href="accountmyc.html">
+                            <i class="icon-double-angle-right"></i>我的渲染
+                        </a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-cloud"> <img src="customer/images/iii1.jpg" style="margin: -7px 6px 0 6px;" height="15" width="20"></i>
+                        <span class="menu-text">动作捕捉管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+
+                        <li><a href="accountmp.html">
+                            <i class="icon-double-angle-right"></i>动捕流程
+                        </a></li>
+                        <li><a href="accountmym.html">
+                            <i class="icon-double-angle-right"></i> 我的动捕
+                        </a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-cloud"> <img src="customer/images/iii4.jpg" style="margin: -7px 6px 0 7px;" height="15" width="20"></i>
+                        <span class="menu-text">影视后期制作管理</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li><a href="accountfp.html">
+                            <i class="icon-double-angle-right"></i>制作流程
+                        </a></li>
+                        <li><a href="accountmyf.html">
+                            <i class="icon-double-angle-right"></i>我的制作
+                        </a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="" class="dropdown-toggle">
+                        <i class="icon-cloud"> <img src="customer/images/iii6.jpg" style="margin: -7px 6px 0 7px;" height="15" width="20"></i>
+                        <span class="menu-text">创意产品购物车</span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li><a href="accountmyt.html">
+                            <i class="icon-double-angle-right"></i>我的订单
+                        </a></li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href=" " class="dropdown-toggle">
+                        <i class="icon-user"> <img src="customer/images/iii3.jpg" style="margin: -8px 6px 0 9px;" height="18" width="16"></i>
+
+                        <span class="menu-text">个人资料 </span>
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="accountchangedata.html">
+                                <i class="icon-double-angle-right"></i>
+                                修改资料
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="accountchangepass.html">
+                                <i class="icon-double-angle-right"></i>
+                                修改密码
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <!--<li>-->
+                <!--<a href=" ">-->
+                <!--<i class="icon-phone-sign"></i>-->
+                <!--&lt;!&ndash;<img src="/img/contact_s.png" width="18px" height="20px" style="margin:-5px 6px 0 6px;" />&ndash;&gt;-->
+                <!--<span class="menu-text">  400-0034560 </span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="creationdesign.html">
+                        <img src="customer/images/iii5.jpg" style="margin: -2px 6px 0 8px;" height="20" width="20">
+                        <span class="menu-text">返回平台</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('sidebar', 'collapsed')
+                } catch (e) {
+                }
+            </script>
+        </div>
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+
+                    <li class="active">
+                        <a href="" class="nav-list-dashboard">
+
+                            <span class="menu-text">账号中心</span>
+                        </a>
+                    </li></ul>
+                <!-- .breadcrumb -->
+
+                <div class="nav-search hide" id="nav-search">
+                    <form class="form-search">
+                    <span class="input-icon"> <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off"> <i class="icon-search nav-search-icon"></i>
+                    </span>
+                    </form>
+                </div>
+                <!-- #nav-search -->
+            </div>
+
+            <div class="page-content">
+                <!-- /.page-header -->
+
+                <div class="row" style="min-height: 500px;">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+                        <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+                        <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+                        <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+                        <!--[if (gt IE 9)|!(IE)]><!-->
+
+                        <!--<![endif]-->
+
+                        <form class="form-horizontal" action="" method="post" id="customerForm" name="customerForm" novalidate="novalidate">
+                            <div class="box corner-all">
+                                <!--box header-->
+                                <h3>修改资料</h3>
+
+                                <!--<div class="box-header">-->
+
+
+                                <!--</div>-->
+
+                                <!--<div class="box-header" style="width: 760px; height: 50px; line-height: 50px; font-size: 16px; text-align: center; ">-->
+
+                                <!--</div>-->
+                                <div class="box-body" style="margin-top: 23px; width: 900px;height: 450px;text-align: center">
+
+                                    <div class="acdata">
+                                        <div class="update-customer-input input-with-btn">
+                                            <label>银行卡号</label>
+                                            <input type="text" class="form-input-right" name="customer.email" value="" placeholder="必填" oninput="showClearBtn(0)">
+                                        </div>
+
+                                        <div class="update-customer-input input-with-btn">
+                                            <label>持卡人</label>
+                                            <input type="text" class="form-input-right" name="customer.company" value="" placeholder="必填" oninput="showClearBtn(1)">
+                                        </div>
+                                        <div class="update-customer-input input-with-btn">
+                                            <label>身份证号</label>
+                                            <input type="number" class="form-input-right" name="customer.custName" value="" placeholder="必填" oninput="showClearBtn(2)">
+                                        </div>
+                                        <div class="update-customer-input input-with-btn">
+                                            <label>网银密码</label>
+                                            <input type="password" class="form-input-right" name="customer.job" value="" placeholder="必填" oninput="showClearBtn(3)">
+                                        </div>
+                                        <div class="update-customer-input">
+                                            <input type="submit" class="btn-w7 update-customer-btn" style="width: 100px;height: 40px" value="立即支付">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!--box body-->
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="footer-w7">
+                Copyright © 2015 青岛市科学技术局. All Rights Reserved.
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /.main-container -->
+<script src="customer/bootstrap.min.js"></script>
+<script src="customer/ace.min.js"></script>
+<script type="text/javascript">
+    jQuery(function($){
+        $('#ace-settings-navbar').click();
+        $('#ace-settings-sidebar').click();
+        var url='/index.action';
+        var path='';
+        var queryString='null';
+        url = url.replace(path, '');
+        url = url.substring(1, url.length);
+        var activeLi = $(".sidebar").find("a[href*='" + url + "']")
+                .parent("li");
+        if (activeLi) {
+            if (activeLi.length > 1) {
+                if (queryString)
+                    url = url + "?" + queryString;
+                activeLi = $("a[href*='" + url + "']").parent("li");
+            }
+            $(activeLi).addClass('active');
+            var activeLiParent = $(activeLi).parents('li');
+            var bnode = $(activeLi).siblings().find(".dropdown-toggle");
+            $(activeLiParent).addClass('active open');
+            var toggle = $(activeLiParent).find(".dropdown-toggle");
+            if (toggle)
+                $.each(toggle, function(index, node) {
+                    if ($.inArray(node, bnode) < 0) {
+                        var newnode = $(node).clone(true);
+                        $(newnode).find("i").remove();
+                        $(newnode).find("b").remove();
+                        $(newnode).find("small").remove();
+                        $(newnode).find("img").remove();
+                        $("ul[class='breadcrumb']").append(
+                                "<li>" + $(newnode).html()
+                                + "<a href='#'></a></li>");
+                    }
+                });
+            var infoNode = $("ul[class='breadcrumb']");
+            if (activeLi) {
+                var node = $(activeLi).clone(true);
+                $(node).find("i").remove();
+                if ($(node).html())
+                    $(node)
+                            .html(
+                            $(node).html().replace(/&nbsp;/ig,
+                                    ""));
+                $(node).appendTo(infoNode);
+            }
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
+
+
+

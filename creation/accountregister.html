@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+        青岛市创意设计产业科技服务平台
+    </title>
+
+    <link href="customer/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="customer/ace.min.css">
+    <link rel="stylesheet" href="customer.css">
+</head>
+<body>
+<div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+        function switch2Other(to){
+            var cus = "";
+            if(!cus){
+                window.location.href='https://'+to+'.rayvision.com/customerLogin.action?';
+                return false;
+            }
+            $.post("/customerSwitch.action",{ },function(result){
+                var d=eval('('+result+')');
+                var uuid=d.uuid;
+                var custId=d.custId;
+                window.location.href='https://'+to+'.rayvision.com/customerLogin.action?pf=w2&uuid='+uuid+'&customer.id='+custId;
+            });
+        }
+        function setHide(){
+            $('#close')[0].style.display='none';
+            $('#closeLeft')[0].style.display='';
+        }
+
+        function changeLang(lan,o){
+            //o.href="javascript:void(0)"+Math.random();
+            //		Metronic.blockUI({boxed: true});
+            $.post("/switchLang.action", {
+                'lang' : lan
+            }, function(result) {
+                if (location.href.indexOf("?") >= 0) {
+                    if (location.href.indexOf("lang=") >= 0) {
+                        location.href = location.href.replace("lang=zh_CN",
+                                "lang=" + lan).replace("lang=en_US",
+                                "lang=" + lan);
+                    } else {
+                        location.href = location.href + "&lang=" + lan;
+                    }
+                } else {
+                    location.href = location.href + "?lang=" + lan;
+                }
+            });
+        }
+        function createNameDiv() {
+            var name = "";
+            if (name.length > 10) {
+                var width = 130 + (name.length - 10) * 6;
+                $("#cln").attr("style", "width:" + width + "px");
+            }
+        }
+        function iQQ() {
+            window.open("http://www5.rayvision.com/qq.jsp");
+        }
+        jQuery(document).ready(function() {
+            createNameDiv();
+            isScroll();
+        });
+
+        function isScroll() {
+            if (typeof ($(".min-width-class").attr("id")) == "undefined") {//未定义最小宽度的属性  则要移除main里面的最小宽度属性
+                $("#containerminwidth").css("min-width", "100%");
+            } else {
+                //$("#containerminwidth").css("min-width","0px");
+                $("#containerminwidth").css("min-width",
+                        ($(".min-width-class").width() + 257) + "px");
+            }
+        }
+        $(window).resize(function() {
+            isScroll();
+        });
+        //添加初始化表格宽度方法
+        jQuery.fn.initTableWidth = function(closWith) {
+            var nodes = $(this).find("thead").find("th");
+            var tableWith = 0;
+            if (closWith && nodes)
+                $.each(nodes, function(index, node) {
+                    if (index < closWith.length) {
+                        $(node).parents("div").css("overflow", "auto");
+                        $(node).css("width", closWith[index] + 'px');
+                        tableWith = tableWith + closWith[index];
+                    } else {
+                        tableWith = tableWith + 80;
+                    }
+                });
+            $(this).css("width", tableWith);
+        }
+        //扩展jquery ui dialog 扩展标题支持html标签
+        $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+            _title : function(title) {
+                var $title = this.options.title || '&nbsp;';
+                if (("title_html" in this.options)
+                        && this.options.title_html == true)
+                    title.html($title);
+                else
+                    title.text($title);
+            }
+        }));
+        //添加统一确认框样式
+        function confirmMsg(title, msg, func) {
+            var div = $("#confirmmsg");
+            if (div.length < 1) {
+                div = $('<div>', {
+                    'id' : 'confirmmsg',
+                    'class' : 'hide'
+                });
+                $("body").append(div);
+            }
+            var html;
+            if (!title)
+                html = "<div class='widget-header'><h4 class='smaller'>Are you sure?</h4></div>";
+            else
+                html = "<div class='widget-header'><h4 class='smaller'>"
+                + title + "</h4></div>";
+            $(div).empty();
+            $(div).append("<p>" + msg + "</p>");
+            var test = $(div).removeClass('hide').dialog({
+                resizable : false,
+                modal : true,
+                title : html,
+                title_html : true,
+                buttons : [ {
+                    html : "确定",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        $(this).dialog("close");
+                        if ($.isFunction(func)) {
+                            func(true);
+                        }
+                        $(this).dialog("close");
+                    }
+                }, {
+                    html : "取消",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        if ($.isFunction(func)) {
+                            func(false);
+                        }
+                        $(this).dialog("close");
+                    }
+                } ]
+            });
+        }
+
+        //添加统一添加弹出框
+        function alertMsg(msg, title) {
+            var div = $("#alertmsg");
+            if (div.length < 1) {
+                div = $('<div>', {
+                    'id' : 'alertmsg',
+                    'class' : 'hide'
+                });
+                $("body").append(div);
+            }
+            var html = "<div class='widget-header'><h4 class='smaller'>Warning！</h4></div>";
+            if (title)
+                html = "<div class='widget-header'><h4 class='smaller'>"+title+"</h4></div>";
+            $(div).empty();
+            $(div).append("<p>" + msg + "</p>");
+            $(div).removeClass('hide').dialog({
+                resizable : false,
+                modal : true,
+                title : html,
+                title_html : true,
+                buttons : [ {
+                    html : "确定",
+                    "class" : "btn btn-primary btn-xs",
+                    click : function() {
+                        $(this).dialog("close");
+                    }
+                } ]
+            });
+        }
+
+    </script>
+
+<div class="loginhead">
+    <img src="img/login-1.jpg" style="width: 100%;height: 20%">
+</div>
+
+<div class="main-container" id="main-container">
+
+    <div id="user-reg-w7" style="margin-top: 0px">
+
+        <h3>注册</h3>
+
+        <form action="" class="form-horizontal" method="post" id="customerForm" name="customerForm" novalidate="novalidate">
+
+            <div class="form-body">
+
+
+                <div class="user-reg-input input-with-btn">
+                    <label>帐号</label>
+                    <input type="text" id="loginName" name="customer.loginName" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                    <span for="loginName" class="help-block-color" style="display: none">账号由数字、字母或下划线组成。</span>
+                    <i class="icon-remove icon-large" onclick="clearInput(0)"></i>
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>密码</label>
+                    <input type="password" id="password" name="customer.password" placeholder="" value="" oninput="showClearBtn(1);" onfocus="showInputRule(1);" onblur="hideInputRule(1);" size="20" maxlength="18">
+                    <i class="icon-remove icon-large" onclick="clearInput(1)"></i>
+                    <span class="help-block-color" for="password" style="display: none;">密码长度必须在8-18位，只能由数字、英文字母和下划线组成</span>
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>确认密码</label>
+                    <input type="password" id="repassword" name="customer.repassword" placeholder="" value="" oninput="showClearBtn(2);" onfocus="showInputRule(2);" onblur="hideInputRule(2);" size="20" maxlength="18">
+                    <i class="icon-remove icon-large" onclick="clearInput(2)"></i>
+                    <span class="help-block-color" for="repassword" style="display: none;">与密码保持一致</span>
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>联系邮箱</label>
+                    <input type="text" id="email" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>联系电话</label>
+                    <input type="text" id="phone" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+
+                <div class="user-reg-input input-with-btn">
+                    <label>公司名称</label>
+                    <input type="text" id="comName" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>公司类型</label>
+                    <input type="text" id="comTyoe" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>注册号</label>
+                    <input type="text" id="reNum" name="" autocomplete="off" placeholder="工商局注册号" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>注册资本</label>
+                    <input type="text" id="reMoney" name="" autocomplete="off" placeholder="万元单位" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+                <div class="user-reg-input input-with-btn">
+                    <label>法定&nbsp;&nbsp;<br>代表人</label>
+                    <input type="text" id="repPerson" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+
+                <div class="user-reg-input input-with-btn">
+                    <label>公司地址</label>
+                    <input type="text" id="comAdd" name="" autocomplete="off" placeholder="" value="" size="20" maxlength="20" oninput="showClearBtn(0);" onfocus="showInputRule(0);" onblur="hideInputRule(0);">
+                </div>
+
+
+                <div class="user-login-reg">
+                    <input  class="login-and-reg" type="button" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" value="立即注册" style="margin-left: 27%"/>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+</div>
+
+
+</body>
+</html>

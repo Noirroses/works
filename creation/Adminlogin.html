@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+        青岛市创意设计产业科技服务平台
+    </title>
+    <link href="customer/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="customer/ace.min.css">
+    <link rel="stylesheet" href="customer.css">
+</head>
+<body class="navbar-fixed">
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="" class="navbar-brand">
+                <small>
+                    <!-- <img src="/img/logo_white.png" style="vertical-align: top;" height="27px" width="240" /> -->
+                    <img src="customer/images/logo.png">
+                </small>
+            </a>
+            <!-- /.brand -->
+        </div>
+        <!-- /.navbar-header -->
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav top-right-nav">
+                <li>
+                    <a href=" ">
+                        <i class="fa fa-sign-out"></i>退出
+                    </a>
+                </li>
+            </ul>
+            <!-- /.ace-nav -->
+        </div>
+        <!-- /.navbar-header -->
+    </div>
+    <!-- /.container -->
+</div>
+
+
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+    </div>
+    ﻿<div id="user-login-w7" class="">
+
+        <!--微信登录-->
+        <!--<ul class="login-navbar">
+            <li class="qr-code-login" onclick="changeLoginWay(0)">微信user.login.qr</li>
+            <li class="acc-pwd-login login-active" onclick="changeLoginWay(1)">登录</li>
+        </ul>-->
+
+        <h3>
+            登录
+        </h3>
+
+        <form class="form-horizontal" method="post" id="loginForm" name="customerForm" action="" autocomplete="off" novalidate="novalidate">
+
+            <!--
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                    <div class="col-sm-8">
+                            <span class="help-block" style="color:red"></span>
+                    </div>
+                </div>
+            -->
+
+
+
+
+
+            <div class="user-login-input input-with-btn">
+                <label for="loginName">帐号</label>
+                <input type="text" id="loginName" name="customer.loginName" value="" oninput="showClearBtn(0)" aria-required="true" aria-invalid="false"><span for="loginName" class="help-block"></span>
+                <i class="icon-remove icon-large" onclick="clearInput(0)" style="display: inline;"></i>
+                <img src="customer/images/usename.png" width="25px" height="25px">
+            </div>
+
+            <div class="user-login-input input-with-btn">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="customer.password" value="" oninput="showClearBtn(1)" aria-required="true" aria-invalid="false"><span for="password" class="help-block"></span>
+                <i class="icon-remove icon-large" onclick="clearInput(1)"></i>
+                <img src="customer/images/password.png" width="25px" height="25px">
+            </div>
+
+            <!-- 记住自动登陆
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                <div class="col-sm-8">
+                  <input type="checkbox" name="rememberMe" id="rememberMe" value="yes" class="make-switch"/> 记住我的信息<a href="/resetPassword!in.action">忘记密码</a>
+                  <span class="help-block"></span>
+                </div>
+            </div>
+             -->
+
+
+
+            <div class="user-login-reg">
+                <input type="submit" class="login-and-reg" id="orderAndPay" value="登录" style="width: 100%;">
+
+            </div>
+            <div class="space-4"></div>
+            <div class="space-4"></div>
+
+            <!-- 先注释掉其他登陆方式
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">其他方式登录：</label>
+                <div class="col-sm-8">
+
+
+                              <a href="javascript:void(0)" onclick="qqlogin()" ><img  src="/img/qq_login.png" /></a>
+                          &nbsp;&nbsp;&nbsp;
+                          <a href="javascript:void(0)" onclick="weibologin()" ><img  src="/img/weibo_login.png" /></a>
+                          &nbsp;&nbsp;&nbsp;
+                          <a href="javascript:void(0)" onclick="wexinlogin()" ><img  src="/img/weixin.png" /></a>
+                          &nbsp;&nbsp;&nbsp;
+
+                </div>
+            </div>
+             -->
+
+
+            <input type="hidden" name="goingToUrl" value="">
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

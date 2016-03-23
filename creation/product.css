@@ -1,0 +1,156 @@
+
+/*----**/
+.portfolio-top{
+	text-align:center;
+	padding: 5em 0;
+}
+.portfolio-grid h3{
+	margin:0 0 0.3em;
+	font-size:3.5em;
+	color:#000;
+	text-transform:uppercase;
+	font-weight:300;
+}
+.portfolio-grid h3 span{
+	font-weight:600;
+}
+.portfolio-grid p{
+	margin:2em 0;
+	font-size:1.2em;
+	color:#000;
+}
+.by-type{
+	float:left;
+}
+.by-type h6{
+	margin: 0.7em 0 0;
+	font-size:1.3em;
+	color:#000;
+	font-weight:600;
+	text-transform:uppercase;
+}
+#filters {
+	margin:0;
+	padding: 0;
+	list-style: none;
+	float:right;
+}
+#filters li {
+	display:inline-block;
+	display: -moz-inline-box;
+}
+#filters li span.active {
+	display: block;
+	padding: 8px;
+	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+	font-size: 18px;
+}
+#filters li span:hover {
+	color: #000;
+}
+#filters li label {
+	margin: 0;
+	padding: 0.5em 0 0;
+	font-size: 1.2em;
+	color:#A4A4A4;
+}
+#filters li span {
+	display: block;
+	padding: 8px ;
+	text-decoration: none;
+	color: #A4A4A4;
+	cursor: pointer;
+	font-size: 18px;
+}
+.portfolio{
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    margin-bottom: 20px;
+
+}
+#portfoliolist .portfolio {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	width: 22.72%;
+	display: none;
+	float: left;
+	overflow: hidden;
+	margin: 50px;
+}
+div#portfoliolist {
+		padding: 0px 0px;
+}	
+.portfolio-wrapper {
+		overflow:hidden;
+		position: relative !important;
+		cursor:pointer;
+}
+
+.portfolio img {
+		max-width:100%;
+		transition: all 300ms!important;
+		-webkit-transition: all 300ms!important;
+		-moz-transition: all 300ms!important;
+
+}
+.portfolio .label {
+		position: absolute;
+		width: 100%;
+		height:40px;
+		bottom:-40px;
+}
+.portfolio .label-bg {
+			background: #22B4B8;
+			width: 100%;
+			height:100%;
+			position: absolute;
+			top:0;
+			left:0;
+}
+.portfolio .label-text {
+			color:#fff;
+			position: relative;
+			z-index:500;
+			padding:5px 8px;
+}		
+.portfolio .text-category {
+	display:block;
+	font-size:9px;
+	font-size: 12px;
+	text-transform:uppercase;
+}
+.simple h5{
+	font-size: 1.3em;
+	margin: 0;
+	color: #fff;
+	text-transform: uppercase;
+}
+.simple {
+	text-align: center;
+	padding: 6em 0;
+	display: none;
+	position: absolute;
+	top: 0;
+	width:100%;
+	height:100%;
+	background:#000;
+}
+.simple p {
+	font-size: 1.2em;
+	margin: 0 0 0.6em;
+	padding: 0.3em 0;
+	color: #ADADAD;
+}
+.simple label{
+	background: url(img/img-sprite.png) -664px -57px;
+	width: 44px;
+	height: 52px;
+	display: inline-block;
+}
+.portfolio-wrapper:hover .simple{
+	display:block;
+}
+/*----*/

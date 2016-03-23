@@ -1,0 +1,128 @@
+.main-container{position:static;padding:0}.main-container:after{background-color:#FFF;bottom:0;content:"";display:block;max-width:inherit;position:fixed;top:0;width:100%;z-index:-2}
+#main-container{
+    width: 100%;
+    /*min-width: 1250px;*/
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative;       /* 防止给footer设置绝对定位时，超出容器 */
+}
+
+#user-login-w7{
+    width: 500px;
+    height: auto;
+    min-height: 400px;
+    border: 1px solid #eee;
+    background: #fcfcfc;
+    padding: 30px 40px;
+    margin: 0 auto;
+    margin-top: 8%;
+}
+
+#user-login-w7 #loginForm{
+    width: 418px;
+    margin-top: 20px;
+    /*position: absolute;*/
+}
+
+.user-login-input{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.user-login-input i{
+    display: none;
+    position: absolute;
+    top: 33px;
+    right: 2%;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.user-login-input label, .user-login-input input{
+    width: 100%;
+    display: block;
+}
+
+#user-login-w7 #loginName, #user-login-w7 #password{
+    height: 32px;
+    background-color: #fff;
+    padding-left: 35px;
+}
+
+.user-login-input img{
+    position: absolute;
+    top: 28.5px;
+    left: 3px;
+}
+.about-password{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+}
+
+.about-password a{
+    float: right;
+}
+
+.about-password input{
+    position: absolute;
+    top:4px;
+}
+
+.about-password span{
+    margin-left: 20px;
+}
+.user-login-reg{
+    width:100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.user-login-reg a{
+    float: right;
+}
+
+.user-login-reg a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.login-and-reg{
+    display: inline-block;
+    width: 47%;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background-color: #02a6bc;
+    color: #fff;
+}
+.space-4{max-height:1px;min-height:1px;overflow:hidden;margin:12px 0;margin:4px 0 3px}
+.form-horizontal .control-label,.form-horizontal .radio,.form-horizontal .checkbox,.form-horizontal .radio-inline,.form-horizontal .checkbox-inline{padding-top:7px;margin-top:0;margin-bottom:0}.form-horizontal .form-group{margin-right:-12px;margin-left:-12px}.form-horizontal .form-group:before,.form-horizontal .form-group:after{display:table;content:" "}.form-horizontal .form-group:after{clear:both}.form-horizontal .form-group:before,.form-horizontal .form-group:after{display:table;content:" "}.form-horizontal .form-group:after{clear:both}
+.help-block,.has-warning .control-label{color:#c09853}
+#user-reg-w7 .help-block, #user-reg-w7 .help-block-color,#user-reg-w7 .reg-help-block{
+    margin-left: 15%;
+}
+.help-block-color{
+    display:block;
+    margin-top:5px;
+    margin-bottom:10px;
+    color:#d16e6c;
+}
+.forget-password-div .help-block{
+    margin-left: 18%;
+    color: red;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]{
+    cursor: pointer;
+    -webkit-appearance: button;
+
+}
+button, input, textarea, th, td, {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
