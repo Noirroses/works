@@ -69,7 +69,7 @@
     height:690px;
     margin: 0 auto;
     position: relative;
-    background:url("img/banner.jpg") no-repeat;
+    background:url("http://7xs66l.com1.z0.glb.clouddn.com/banner.jpg") no-repeat;
     background-size: cover;
     overflow: hidden;
     min-width: 1280px;
@@ -181,7 +181,7 @@
     min-width: 1280px;
     height: 340px;
     position: relative;
-    background:url("img/map.jpg") no-repeat ;
+    background:url("http://7xs66l.com1.z0.glb.clouddn.com/map.jpg") no-repeat ;
     background-size: cover;
     text-align: center;
 
@@ -397,7 +397,7 @@
     width: 66.67%;
     height: 567px;
     float: left;
-    background: url("img/new-time.jpg") no-repeat;
+    background: url("http://7xs66l.com1.z0.glb.clouddn.com/new-time.jpg") no-repeat;
     text-align: center;
     padding-top: 132px;
     background-size: cover;
@@ -502,7 +502,7 @@
     width: 33.33%;
     height: 521px;
     float: right;
-    background: url("img/new-age.jpg") no-repeat;
+    background: url("http://7xs66l.com1.z0.glb.clouddn.com/new-age.jpg") no-repeat;
     background-size: cover;
     position: relative;
 }
