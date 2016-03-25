@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<h3>污染城市列表</h3>
+<ul id="aqi-list">
+    <!--
+        <li>第一名：福州（样例），10</li>
+          <li>第二名：福州（样例），10</li> -->
+</ul>
+
+<script type="text/javascript">
+
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 10],
+        ["广州", 50],
+        ["成都", 90],
+        ["西安", 100]
+    ];
+
+    (function () {
+
+        /*
+         在注释下方编写代码
+         遍历读取aqiData中各个城市的数据
+         将空气质量指数大于60的城市显示到aqi-list的列表中
+         */
+
+//        用filter（）方法对数组进行过滤，生成新数组
+        var aqiNewData = aqiData.filter(function(data){
+            return data[1]>60;
+        });
+
+//        用sort()方法对新数组进行从大到小排序
+        aqiNewData.sort(function(a,b){
+            return b[1] - a[1];
+        });
+
+//        用createDocumentFragment()创建虚拟（碎片）节点的方法可以更安全改变文档的结构及节点
+        var Fragment = document.createDocumentFragment();
+        for(var i=1;i<=aqiNewData.length;i++){
+            var li = document.createElement('li');
+            var text = document.createTextNode('第'+ i + '名 ：' + aqiNewData[i-1]);
+            li.appendChild(text);
+            Fragment.appendChild(li);
+        }
+        var list = document.getElementById('aqi-list');
+        list.appendChild(Fragment);
+
+    })();
+
+</script>
+</body>
+</html>
