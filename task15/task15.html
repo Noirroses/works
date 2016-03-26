@@ -66,6 +66,7 @@
 //            // 将字符串分割
 //            var targetList = text.split(/空气质量：/g);
 //            data.push([targetList[0], +targetList[1]]);
+              // + 代表转换成数值
 //
 //        }
 //        return data;
@@ -112,6 +113,10 @@
         document.getElementById('sort-btn').onclick=function(){
             btnHandle();
         }
+
+
+//        var btn = document.getElementById('sort-btn');
+//        btn.addEventListener('click',btnHandle,false);
 
     }
 
