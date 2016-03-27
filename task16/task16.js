@@ -32,12 +32,22 @@ function addAqiData() {
  * 渲染aqi-table表格
  */
 function renderAqiList() {
+
     var table = document.getElementById('aqi-table');
-    var str = "<tr>><th>城市</th><th>空气质量</th><th>删除当前</th></tr>";
+    var str = "<tr><th>城市</th><th>空气质量</th><th>删除当前</th></tr>";
     for (var c in aqiData){
         str += "<tr><td>" + c +"</td><td>"+aqiData[c]+"</td><td><button onclick=\"delBtnHandle(\'" + c + "\')\">删除</button></td></tr>";
     }
     table.innerHTML = str;
+
+    //var newList =[];
+    //newList.push("<tr><th>城市</th><th>空气质量</th><th>删除当前</th></tr>");
+    //for(var i in aqiData){
+    //    newList.push("<tr><td>"+ i + "</td><td>"+ aqiData[i]+"</td><td><button onclick=\"delBtnHandle(\'"+ i +"\')\">删除</button></td></tr>");
+    //}
+    //var table = document.getElementById('aqi-table');
+    //table.innerHTML = newList.join('');
+
 }
 
 /**
@@ -71,4 +81,4 @@ function init(){
 
 window.onload = function(){
     init();
-}
+};
