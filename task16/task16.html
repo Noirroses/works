@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <title>IFE JavaScript Task 01</title>
+    <!--<script src="task16.js"></script>-->
     <script src="task16.js"></script>
     <style>
-        label:first-child{
 
-            margin-right: 32px;
-
-        }
         label{
             font-family: "Microsoft YaHei", SimSun, SimHei;
             font-size: 16px;
             margin-left: 14px;
+        }
+        label:first-child>input{
+            margin-left: 32px;
         }
         #add-btn{
             width: 100px;
@@ -21,23 +21,24 @@
             border: none;
             outline: none;
             border-radius: 8px;
-            background-color: #31b0d5;
+            background-color:#31b0d5;
             font-family: "Microsoft YaHei", SimSun, SimHei;
             font-size: 15px;
             margin-left: 10px;
             margin-top: 20px;
+            cursor: pointer;
         }
         #add-btn:active{
             border: none;
+
         }
     </style>
 </head>
 <body>
 
 <div>
-    <label>城市名称：</label><input id="aqi-city-input" type="text"><br>
-    <br>
-    <label>空气质量指数：</label><input id="aqi-value-input" type="text"><br>
+    <label>城市名称：<input id="aqi-city-input" type="text"></label><br><br>
+    <label>空气质量指数：<input id="aqi-value-input" type="text"></label><br>
     <button id="add-btn">确认添加</button>
 </div>
 <table id="aqi-table">
