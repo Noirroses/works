@@ -395,7 +395,7 @@
          <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>任务十三：零基础JavaScript编码（一）</h3>
+                    <h3>任务十三：零基础JavaScript编码</h3>
                     <p>
                         本任务完成的功能为：用户可以在输入框中输入任何内容，点击“确认填写”按钮后，用户输入的内容会显示在“您输入的值是”文字的右边
                     </p>
@@ -410,7 +410,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>任务十四：零基础JavaScript编码（二）</h3>
+                    <h3>任务十四：过滤筛选空气质量数据数组</h3>
                     <p>
                         在上一任务基础上继续JavaScript的体验。页面加载后，将提供的空气质量数据数组，按照某种逻辑（比如空气质量大于60）进行过滤筛选，最后将符合条件的数据按照一定的格式要求显示在网页上。
                     </p>
@@ -425,7 +425,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>任务十五：零基础JavaScript编码（三）</h3>
+                    <h3>任务十五：提取并排序空气质量指数</h3>
                     <p>
                         在上一任务基础上继续JavaScript的体验。读取页面上已有的source列表，从中提取出城市以及对应的空气质量
                         将数据按照某种顺序排序后，在resort列表中按照顺序显示出来。学习JavaScript中的数组对象遍历、读写、排序等操作。
@@ -441,7 +441,7 @@
         <div class="col-sm-12 col-md-8">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>任务十六：零基础JavaScript编码（四）</h3>
+                    <h3>任务十六：添加删除城市与空气质量</h3>
                     <p>
                         在上一任务基础上继续JavaScript的体验。用户输入城市名称和空气质量指数后，点击“确认添加”按钮后，就会将用户的输入在进行验证后，添加到下面的表格中，新增一行进行显示。用户输入的城市名必须为中英文字符，空气质量指数必须为整数。用户输入的城市名字和空气质量指数需要进行前后去空格及空字符处理（trim）。用户输入不合规格时，需要给出提示（允许用alert，也可以自行定义提示方式）。用户可以点击表格列中的“删除”按钮，删掉那一行的数据。
                     </p>
@@ -453,10 +453,32 @@
             </div>
         </div>
 
+        <div class="col-sm-12 col-md-8">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>任务十七：不同地区不同时间空气质量指数柱状图</h3>
+                    <p>
+                        用户可以选择查看不同的时间粒度，以选择要查看的空气质量指数是以天为粒度还是以周或月为粒度；
+                        天：显示每天的空气质量指数；周：以自然周（周一到周日）为粒度，统计一周7天的平均数为这一周
+                        的空气质量数值，如果数据中缺少一个自然周的几天，则按剩余天进行计算；
+                        月：以自然月为粒度，统一一个月所有天的平均数为这一个月的空气质量数值；
+                        用户可以通过select切换城市；通过在"aqi-chart-wrap"里添加DOM，来模拟一个柱状图图表，横轴是时间，
+                        纵轴是空气质量指数，参考图（点击打开）。天、周、月的数据只根据用户的选择显示一种。
+                        天：每天的数据是一个很细的矩形；周：每周的数据是一个矩形；月：每周的数据是一个很粗的矩形；
+                        鼠标移动到柱状图的某个柱子时，用title属性提示这个柱子的具体日期和数据；
+                    </p>
+                    <p>
+                        <a target="_blank" href="https://github.com/Noirroses/works/tree/gh-pages/task17/" class="btn btn-default" role="button">查看 源码 >></a>
+                        <a href="task17/task17.html" target="_blank" class="btn btn-primary" role="button">查看 Demo >></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>任务十八：基础JavaScript练习（一）</h3>
+                    <h3>任务十八：模拟队列</h3>
                     <p>
                         模拟一个队列，队列的每个元素是一个数字，初始队列为空；
                         有一个input输入框，以及4个操作按钮；
