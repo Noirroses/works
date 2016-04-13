@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        table {
+            margin: 50px auto;
+        }
+        td:first-child {
+            height: 40px;
+            font-family: "Microsoft YaHei", SimSun, SimHei;
+            font-size: 20px;
+            padding-right: 30px;
+            text-align: right;
+        }
+        td:nth-child(3) {
+            padding-left: 10px;
+        }
+        input {
+            width: 250px;
+            height: 32px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            outline: none;
+        }
+        input:hover{
+            border: 1px solid #50a4e9;
+        }
+        button {
+            background-color: #2563AD;
+            color: #fff;
+            height: 40px;
+            width: 90px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        span {
+            color: darkgray;
+            vertical-align: top;
+        }
+        #info {
+            color: #333;
+            font-size: 20px;
+            vertical-align: top;
+        }
+        #right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr id="name_info">
+        <td>名称</td>
+        <td><input type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="nameSpan"></span></td>
+        <td></td>
+    </tr>
+    <tr id="password_info">
+        <td>密码</td>
+        <td><input type="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="passwordSpan"></span></td>
+        <td></td>
+    </tr>
+    <tr id="confirm_info">
+        <td>密码确认</td>
+        <td><input type="password"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="confirmSpan"></span></td>
+        <td></td>
+    </tr>
+    <tr id="email_info">
+        <td>邮箱</td>
+        <td><input type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="emailSpan"></span></td>
+        <td></td>
+    </tr>
+    <tr id="phone_info">
+        <td>手机</td>
+        <td><input type="text"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><span id="phoneSpan"></span></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td id="right"><button id="btnRight">提交</button></td>
+    </tr>
+</table>
+<script type="text/javascript" src="task30.js"></script>
+</body>
+</html>

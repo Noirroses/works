@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            margin: 50px auto;
+        }
+        td:first-child{
+            height: 50px;
+            font-size: 24px;
+            padding-right: 30px;
+        }
+        td:nth-of-type(3){
+            padding-left: 10px;
+        }
+        input{
+            width: 250px;
+            height: 32px;
+            border-radius: 5px;
+            border-color: #cccccc;
+        }
+        button{
+            background-color: #2563AD;
+            color: #fff;
+            height: 40px;
+            width: 90px;
+            font-size: 24px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+        #info{
+            color: #cccccc;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>名称</td>
+            <td><input type="text"></td>
+            <td><button>验证</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="info">必填，长度为4~16个字符</td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        var inputName = document.getElementsByTagName('input')[0];
+        var infoWord = document.getElementById('info');
+        document.getElementsByTagName('button')[0].onclick = function(){
+            var inputValue = inputName.value.trim();
+            if(countLength(inputValue)==0){
+                infoWord.innerHTML = '姓名不能为空';
+                infoWord.style.color = 'red';
+                inputName.style.border = '1px solid red';
+            }else if(countLength(inputValue)>=4 && countLength(inputValue)<=16){
+                infoWord.innerHTML = '格式正确';
+                infoWord.style.color = 'lightgreen';
+                inputName.style.border = '1px solid lightgreen';
+            }else{
+                infoWord.innerHTML ='请输入长度为4~16位字符';
+                infoWord.style.color = 'red';
+                inputName.style.border = '1px solid red';
+            }
+        }
+
+//        统计输入的总字符长度
+        function countLength(str){
+            var inputLength = 0;
+            for(var i =0;i<str.length;i++){
+                var countCode = str.charCodeAt(i);
+                /**
+                 * 两个用于访问字符串中特定字符的方法是：charAt()和charCodeAt()。
+                 * 这两个方法都接收一个参数，即基于0 的字符位置。
+                 * 其中，charAt()方法以单字符字符串的形式返回给定位置的那个字符。
+                 * 如果你想得到的不是字符而是字符编码，那么就要使用charCodeAt()了
+                 */
+                if(countCode>=0 && countCode<=128){
+                    inputLength +=1;
+                    //0-128编码是数字、英文字母和符号的编码。每个英文字母、数字、英文符号长度为1。
+                }else{
+                    //每个汉字，中文符号长度为2
+                    inputLength +=2;
+                }
+
+            }
+            return inputLength;
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
