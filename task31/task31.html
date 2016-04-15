@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            font-family: "Microsoft YaHei", SimSun, SimHei;
+        }
+        .wrap{
+            width: 550px;
+            margin: 200px auto;
+        }
+        .input-group{
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .input-radio{
+            display: inline;
+            position: relative;
+        }
+        .input-radio:first-child{
+            margin-right: 110px;
+        }
+        input[type="radio"]{
+            border: 1px solid #999;
+            width: 18px;
+            height: 18px;
+            position: relative;
+            top: 3px;
+            z-index: 1000;
+            opacity: 0;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .input-style{
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #c5c5c5;
+            border-radius: 50%;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        input:hover + span{
+            border: 6px solid #3496fe;
+            box-shadow: 0 0 3px #3496fe;
+        }
+        input:checked +span{
+            border: 6px solid #3496FE;
+            box-shadow: 0 0 3px #3496FE;
+        }
+        .sc{
+            margin-top: 20px;
+        }
+        .sc label{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 30px;
+
+        }
+        .sc select{
+            width: 140px;
+            outline: none;
+            padding: 5px;
+            border: 1px solid #cdcdcd;
+            border-radius: 4px;
+        }
+        .sc select:last-child{
+            width: 200px;
+            margin-left: 40px;
+        }
+        .sc select:focus{
+            border-color: #3396FE;
+            box-shadow: 0 0 3px #3396FE;
+        }
+        .work{
+            margin-top: 20px;
+            display: none;
+        }
+        .work label{
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 30px;
+        }
+        .work input {
+            width: 350px;
+            outline: none;
+            padding: 5px 10px;
+            border: 1px solid #CDCDCD;
+            border-radius: 4px;
+        }
+        .work input:focus{
+            border-color: #3396FE;
+            box-shadow: 0 0 3px #3396FE;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="input-group">
+            <div class="input-radio">
+                <input id="yes" type="radio" name="school" value="school" checked>
+                <span class="input-style"></span>在校生
+            </div>
+            <div class="input-radio">
+                <input id="no" type="radio" name="school" value="noschool">
+                <span class="input-style"></span>非在校生
+            </div>
+        </div>
+        <div id="sc" class="sc">
+            <label>学校</label>
+            <!--select开始与结束标签之间要换行！！！否则二级联动菜单不显示-->
+            <select name="" id="city-select">
+            </select>
+            <select name="" id="school-select">
+            </select>
+        </div>
+        <div id="work" class="work">
+            <label>就业单位</label>
+            <input type="text">
+        </div>
+    </div>
+
+<script src="task31.js"></script>
+</body>
+</html>
