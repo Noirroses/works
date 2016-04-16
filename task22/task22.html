@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .branch{
+            display:inline-block;
+            margin: 20px;
+            border: 1px solid #000;
+            text-align: center;
+            background: #fff;
+        }
+        .tree-0{
+            width: 1000px;
+            height: 400px;
+        }
+        .tree-1{
+            width: 45%;
+            height: 90%;
+        }
+        .tree-2{
+            width: 38%;
+            height: 90%;
+        }
+        .tree-3{
+            width: 20%;
+            height: 90%;
+        }
+    </style>
+</head>
+<body>
+<div class="tree-0 branch">
+    <div class="tree-1 branch">
+        <div class="tree-2 branch">
+            <div class="tree-3 branch"></div>
+            <div class="tree-3 branch"></div>
+        </div>
+        <div class="tree-2 branch">
+            <div class="tree-3 branch"></div>
+            <div class="tree-3 branch"></div>
+        </div>
+    </div>
+    <div class="tree-1 branch">
+        <div class="tree-2 branch">
+            <div class="tree-3 branch"></div>
+            <div class="tree-3 branch"></div>
+        </div>
+        <div class="tree-2 branch">
+            <div class="tree-3 branch"></div>
+            <div class="tree-3 branch"></div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <button id="btn1">前序遍历</button>
+    <button id="btn2">中序遍历</button>
+    <button id="btn3">后序遍历</button>
+</div>
+<script src="task22.js"></script>
+</body>
+</html>
