@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            width: 70%;
+            margin: 0 auto;
+        }
+        div{
+            padding: 10px;
+            border: 1px solid darkcyan;
+            float: left;
+            margin: 10px;
+            background-color: #ffffff;
+        }
+        #btn{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="child">
+        <div>Fork
+            <div>Flash</div>
+            <div>Cola</div>
+            <div>Team</div>
+            <div>Nike</div>
+        </div>
+        <div>Banana</div>
+        <div>Apple
+            <div>Dog</div>
+            <div>Li</div>
+        </div>
+    </div>
+    <div>
+        <div>Miss
+            <div>Word</div>
+            <div>World</div>
+            <div>Hi</div>
+        </div>
+        <div>Love
+            <div>Hello
+                <div>Cat</div>
+            </div>
+            <div>Mao</div>
+        </div>
+    </div>
+    <div>Null</div>
+</div>
+<div id="btn">
+    <input id="traversal" type="button" value="遍历">
+    <input id="searchInput" type="text">
+    <input id="search" type="button" value="查询">
+    <input id="delete" type="button" value="删除节点"/>
+    <textarea id="addInput" placeholder="输入所要添加的节点"></textarea>
+    <input id="add" type="button" value="添加节点"/>
+</div>
+<script src="task24.js"></script>
+
+</body>
+</html>
