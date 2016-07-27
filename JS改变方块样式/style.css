@@ -1,0 +1,82 @@
+*{
+    margin:0;
+    padding:0;
+}
+#container{
+    position: relative;
+}
+#containerOp{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: black;
+    top: 0px;
+    opacity: 0.5;
+    display: none;
+}
+p{
+    display: inline-block;
+    color: black;
+}
+button:hover{
+    outline-style:none ;
+    background: skyblue;
+}
+#red:hover{
+    background: red;
+}
+#yellow:hover{
+    background: yellow;
+}
+#blue:hover{
+    background: blue;
+}
+#setAllBtn{
+    background: white;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    outline-style: none;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+#setAllBtn:hover{
+    border: 1px solid blueviolet;
+}
+#block{
+    width: 100px;
+    height:100px;
+    background: white;
+    border: 5px solid black;
+    margin: 10px;
+}
+#setBlock{
+    width: 330px;
+    height: 200px;
+    border-radius: 7px;
+    margin:auto;
+    position: absolute;
+    top:0;left: 0;
+    right:0;bottom: 0;
+    background-color: white;
+    padding: 50px;
+}
+#setBlock p{
+    font-family: "Microsoft YaHei", SimSun, SimHei;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 50px;
+}
+#setBlock button{
+    width: 60px;
+    height: 25px;
+}
+.lastBtn{
+    width: 144px;
+    height: 30px;
+    margin: 20px auto;
+}
+#recover,#confirm{
+    width: 70px !important;
+    height: 30px !important;
+}
