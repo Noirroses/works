@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style>
+        *{ margin: 0;padding: 0;}
+        #box{ width: 500px;height:500px;border:10px solid #ccc;margin: 50px auto;position:relative;}
+        img{width: 500px;height:500px;}
+        a{text-align:center;width: 50px;height:50px;font-size:30px;line-height:50px;position:absolute;top:200px;
+            background:#f1f1f1;filter:alpha(opacity:80);opacity:0.8;text-decoration:none;}
+        a:hover{filter:alpha(opacity:50);opacity:0.5;}
+        #prev{left:10px;}
+        #next{right:10px;}
+        #p1,#strong1{position: absolute;width: 500px;height: 30px;font-size: 16px;line-height:30px;color:white;
+            background:#333333;filter:alpha(opacity:80);opacity:0.8;text-align: center;}
+        #p1{bottom: 0px;}
+        #strong1{top:0px;}
+
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById('box');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var strong1 = document.getElementById('strong1');
+            var p1 = document.getElementById('p1');
+            var img1 = document.getElementById('img1');
+
+            var imgArr = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'];
+            var textArr = ['姬如雪','百里登风','甲轩','燕尔灵持'];
+            
+            var num = 0;
+            
+            function Change() {
+                strong1.innerHTML = num+1+'/'+imgArr.length;
+                p1.innerHTML = textArr[num];
+                img1.src = imgArr[num];
+            }
+            Change();
+            next.onclick = function () {
+                num++;
+                if(num==imgArr.length){
+                    num=0;
+                }
+                Change();
+            }
+            prev.onclick = function () {
+                num--;
+                if(num==-1){
+                    num=textArr.length-1;
+                }
+                Change();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <a id="prev" href="javascript:;"> < </a>
+        <a id="next" href="javascript:;"> > </a>
+        <strong id="strong1">图片数量计算中……</strong>
+        <p id="p1">图片文字加载中……</p>
+        <img id="img1" src="img/1.jpg"/>
+    </div>
+</body>
+</html>
