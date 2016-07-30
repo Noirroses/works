@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin:0;padding:0}
+        #box{width: 515px;height:515px;position: absolute;top:0;left:0;background:fuchsia;}
+        .iBox{width: 60px;height: 60px;position: absolute;top:0;left:0;background-attachment:fixed;
+            background:transparent;opacity:0;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var iBox = document.getElementsByClassName('iBox');
+
+            for(var i=0;i<64;i++){
+                document.body.innerHTML += '<div class=\'iBox\'></div>'
+            }
+
+            for(var i=0;i<iBox.length;i++){
+                var iLeft = i%8*65+'px';
+                var iTop = Math.floor(i/8)*65+'px';
+                iBox[i].style.left=iLeft;
+                iBox[i].style.top=iTop;
+                iBox[i].style.background='url(\'img\/pic.jpg\')';
+                iBox[i].style.backgroundPositionX ='-'+iLeft; //background-position:x y;中x,y为负数是指图片向左,上偏移了x和y px;
+                iBox[i].style.backgroundPositionY ='-'+iTop;
+
+                iBox[i].onmouseover = function () {
+                    //alert(1);
+                    //this.style.cssText="opacity:1;"; 不能用cssText!!!会覆盖原来存在的样式!!
+                    this.style.opacity=1; // 用this!!!!!!!!   用iBox[i]会报错!!!!!!
+
+                }
+
+            }
+
+
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+<div id="box"></div>
+
+
+</body>
+</html>
