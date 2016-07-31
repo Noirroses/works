@@ -5,7 +5,6 @@
     <title>Title</title>
     <style>
         *{ margin:0;padding:0}
-        #box{width: 515px;height:515px;position: absolute;top:0;left:0;background:fuchsia;}
         .iBox{width: 60px;height: 60px;position: absolute;top:0;left:0;background-attachment:fixed;
             background:transparent;opacity:0;}
     </style>
@@ -14,13 +13,14 @@
 
             var iBox = document.getElementsByClassName('iBox');
 
-            for(var i=0;i<64;i++){
+            for(var i=0;i<1024;i++){
                 document.body.innerHTML += '<div class=\'iBox\'></div>'
             }
 
             for(var i=0;i<iBox.length;i++){
-                var iLeft = i%8*65+'px';
-                var iTop = Math.floor(i/8)*65+'px';
+                var iLeft = i%32*65+'px';
+                var iTop = Math.floor(i/32)*65+'px';
+
                 iBox[i].style.left=iLeft;
                 iBox[i].style.top=iTop;
                 iBox[i].style.background='url(\'img\/pic.jpg\')';
@@ -45,7 +45,6 @@
 </head>
 
 <body>
-<div id="box"></div>
 
 
 </body>
