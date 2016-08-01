@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        #wrap{
+            width: 804px;
+            margin:30px auto;
+            position: relative;
+        }
+        #slider{
+            margin:10px auto;
+            position: relative;
+        }
+        #slider img{
+            width: 800px;
+            height: 500px;
+
+        }
+        #prev,#next{
+            width: 50px;
+            height: 60px;
+            border-radius: 5px;
+            position: absolute;
+            top: 200px;
+            opacity: 0.5;
+        }
+        #prev{
+            left:10px;
+            background: url("img/pre.png") no-repeat center center silver;
+            background-size:cover;
+
+        }
+        #next{
+            right:10px;
+            background: url("img/next.png") no-repeat center center silver;
+            background-size:cover;
+        }
+        #prev:hover,#next:hover{
+            opacity: 0.8;
+        }
+        #wrap ul{
+            position: absolute;
+            bottom: -30px;
+            left:50%;
+            margin-left: -35px;
+        }
+        #wrap li{
+            width: 12px;
+            height: 12px;
+            background:#777;
+            border-radius: 6px;
+            display: inline-block;
+            position: relative;
+            margin-left: 5px;
+        }
+        #wrap .active{
+            background: #000000;
+
+        }
+        #wrap li img{
+            width: 160px;
+            height: 100px;
+            border:5px solid white;
+            position: absolute;
+            left:-80px;
+            top:-130px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wrap">
+        <h2>带缩略图的图片切换</h2>
+        <div id="slider">
+            <a id="prev" href="javascript:;"></a>
+            <a id="next" href="javascript:;"></a>
+            <img />
+        </div>
+        <ul id="list">
+
+        </ul>
+    </div>
+    <script>
+        (function () {
+            var wrap = document.getElementById('wrap');
+            var slider = document.getElementById('slider');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var list = document.getElementById('list');
+            var li = wrap.getElementsByTagName('li');
+            var img = slider.getElementsByTagName('img')[0];  //首先获取第一个 否则空白
+            var arr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+            var num =0;
+
+            //生成灰色小圆点和缩略图标签
+            for(var i = 0;i<arr.length;i++){
+                list.innerHTML +='<li><img /></li>';
+            }
+
+            //初始化
+            function Change() {
+                //清空li的class
+                for(var i=0;i<li.length;i++){
+                    li[i].className = '';
+
+                }
+                img.src = arr[num];//在每个img上显示与数组与之对应图片
+                li[num].className = 'active';
+
+            }
+            Change();
+
+
+            //点击下一页
+            next.onclick = function () {
+                num++;
+                //当到最后一页的时候
+                if(num == arr.length){
+                    num=0;
+                }
+                Change();
+            };
+            //点击上一页
+            prev.onclick = function () {
+                num--;
+                //当到第一页的时候
+                if(num == -1){
+                    num=arr.length-1;
+                }
+                Change();
+            };
+
+            for(var i = 0;i<li.length;i++){
+                li[i].index = i;//自定义属性,给每一个li添加对应的数字索引值,第一个li对应的索引值为0;
+                //当点击灰色小圆点时
+                li[i].onclick = function () {
+                    num = this.index;//将点击li的索引值赋给num 以便于显示与之对应的图片arr[num]和样式li[num]等
+                    Change();
+                };
+                //当鼠标进入小圆点上方时
+                li[i].onmouseover = function () {
+                    num = this.index;
+                    this.getElementsByTagName('img')[0].style.display = 'block';//显示缩略图框
+                    this.getElementsByTagName('img')[0].src = arr[num];//显示每个缩略图中与数组对应的图片
+
+                };
+                //当鼠标移出小圆点时
+                li[i].onmouseout = function () {
+                    num = this.index;
+                    this.getElementsByTagName('img')[0].style.display = 'none';//隐藏缩略图
+                };
+            }
+
+
+        })();
+    </script>
+
+</body>
+</html>
