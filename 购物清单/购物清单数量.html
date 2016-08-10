@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价:<em>20元</em>
+            总计:<span>0</span>
+        </li>
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价:<em>18.76元</em>
+            总计:<span>0</span>
+        </li>
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价:<em>6.8元</em>
+            总计:<span>0元</span>
+        </li>
+    </ul>
+    <script>
+        (function () {
+            var li = document.getElementsByTagName('li');
+            for(var i = 0;i<li.length;i++){
+                buy(li[i]);
+            }
+            function buy(oli) {
+                var input = oli.getElementsByTagName('input');
+                var strong = oli.getElementsByTagName('strong')[0];
+                var span = oli.getElementsByTagName('span')[0];
+                var em = oli.getElementsByTagName('em')[0];
+                var q = Number(strong.innerHTML);
+                var c = parseFloat(em.innerHTML);
+
+                input[0].onclick = function () {
+                    q--;
+                    if(q<0){
+                        q=0;
+                    }
+
+                    strong.innerHTML = q;
+                    span.innerHTML = q * c + '元';
+
+
+                };
+                input[1].onclick = function () {
+                    q++;
+                    strong.innerHTML = q;
+                    span.innerHTML = q*c + '元';
+                };
+
+            };
+
+
+        })();
+    </script>
+
+
+</body>
+</html>

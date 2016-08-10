@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding: 0;}
+        #list{width: 250px;margin:100px auto;}
+        li{list-style: none}
+        h2{border: 1px solid silver;background: url("img/ico1.gif") no-repeat 5px center #00ffff;padding-left: 20px;line-height:45px}
+        .active{background: url("img/ico2.gif") no-repeat 5px center yellow;}
+        #list ul{display: none}
+        .lis li{list-style: none;border: 1px solid silver;font-size: 16px;line-height:30px;padding-left:20px;}
+        .hover{background: #00ff00}
+    </style>
+    <script>
+        window.onload = function () {
+            var List = document.getElementById('list');
+            var h2 = List.getElementsByTagName('h2');
+            var ul = List.getElementsByTagName('ul');
+            var li =null;
+            var arr = [];
+
+            for(var i=0;i<h2.length;i++){
+                h2[i].index = i;
+                h2[i].onclick = function () {
+                    for(var i = 0;i<h2.length;i++){
+                        if(h2[i] != this){   //this.index指的是在点击下一个的时候上一个被点击的h2
+                            ul[i].style.display = 'none';
+                            h2[i].className = '';
+                        }
+                    }
+                    if(this.className==''){
+                        ul[this.index].style.display = 'block';
+                        this.className = 'active';
+                    }else{
+                        ul[this.index].style.display = 'none';
+                        this.className = '';
+                    }
+                }
+
+            }
+            for(var i=0;i<ul.length;i++){
+                li = ul[i].getElementsByTagName('li');
+                for(var j=0;j<li.length;j++){
+                    arr.push(li[j]);//存入数组
+                }
+            }
+
+            for(var i=0;i<arr.length;i++){
+                arr[i].onclick = function () {
+                   // this.className = 'hover';
+                    for(var i=0;i<arr.length;i++){
+                        if(arr[i] != this){
+                            arr[i].className = '';//此时不能用this
+                        }
+                    }
+                    if(this.className==''){
+                        this.className = 'hover';
+                    }else{
+                        this.className = '';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li class="lis">
+            <h2>我的好友</h2>
+            <ul>
+                <li>赵四</li>
+                <li>钱二</li>
+                <li>孙武</li>
+            </ul>
+        </li>
+
+        <li class="lis">
+            <h2>企业好友</h2>
+            <ul>
+                <li>李三</li>
+                <li>周六</li>
+                <li>吴大</li>
+                <li>郑八</li>
+                <li>王震</li>
+            </ul>
+        </li>
+
+        <li class="lis">
+            <h2>黑名单</h2>
+            <ul>
+                <li>冯毛</li>
+                <li>陈晨</li>
+                <li>褚尔</li>
+            </ul>
+        </li>
+
+    </ul>
+
+</body>
+</html>

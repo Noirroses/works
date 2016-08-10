@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <!--meta http-equiv="x-ua-compatible"content="ie=7"/-->
+    <title>fun</title>
+    <style type="text/css">
+        form{
+            font-size:14px;
+            font-family:"微软雅黑";
+        }
+        input{
+            width:250px;
+        }
+    </style>
+    <script type="text/javascript">
+        var arr = ['100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+
+        /*
+         1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+         2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5
+         3、把转成数字以后，最大值判断出来：300
+         4、把 NaN 所在的位置找出来：1 14 17  19
+         */
+
+
+        //1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+        var arr1 = [];
+
+        for(var i=0;i<arr.length;i++){
+            if(typeof arr[i] === 'number' && isNaN(Number(arr[i])) == false){//同时把NaN去掉 ; 'number'包含NaN类型
+
+                arr1.push(arr[i]);
+            }
+        }
+
+        //alert(arr1);
+
+        //2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5
+        var arr2 = [];
+        for(var i=0;i<arr.length;i++){
+            if(isNaN(parseInt(arr[i])) == false){
+                arr2.push(arr[i]);
+            }
+        }
+        //alert(arr2);
+
+        //3、把转成数字以后，最大值判断出来：300
+        function Max(num1,num2){
+            return num1 > num2 ? num1 : num2;
+        }
+        var maxNum = 0; //最大值
+        for(var i=0;i<arr2.length;i++){
+            var num2 = parseFloat(arr2[i]);
+            maxNum = Max(maxNum,num2);
+        }
+        //alert(maxNum);
+
+        //4、把 NaN 所在的位置找出来：1 14 17  19
+        var arr3 = [];
+
+        for(var i=0;i<arr.length;i++){
+            if(typeof arr[i] === 'number' && isNaN(Number(arr[i]))==true){ //'number'类型既含有数字也包含NaN
+                arr3.push(i);//只push 位置 i
+            }
+        }
+        //alert(arr3);
+
+
+        //输出最终结果:
+        //document.write('arr数组里所有的数字：'+ arr1 + '<br />' + '可以转成数字的：' + arr2 + '<br />' + '把转成数字以后，最大值' + maxNum +'<br />' + 'NaN 所在的位置' +arr3);
+        window.onload = function(){
+            var oAllnum = document.getElementById('allNum');
+            var oNum = document.getElementById('Num');
+            var oMaxNum = document.getElementById('maxNum');
+            var oNanLocation = document.getElementById('nanLocation');
+
+            oAllnum.value = arr1;
+            oNum.value = arr2;
+            oMaxNum.value = maxNum;
+            oNanLocation.value = arr3;
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>输出结果</legend>
+        arr数组里所有的数字：<input id="allNum" type="text" /><br /><br />
+        arr数组里可以转成数字的：<input id="Num" type="text" /><br /><br />
+        把转成数字以后，最大值：<input id="maxNum" type="text" /><br /><br />
+        NaN 所在的位置：<input id="nanLocation" type="text" />
+    </fieldset>
+</form>
+</body>
+</html>
