@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 400px;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid silver;
+            overflow: hidden;
+        }
+        li{
+            list-style: none;
+            width: 400px;
+            height:30px;
+            padding-left: 10px;
+            position: relative;
+            line-height:30px;
+        }
+        input{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .music span{
+            margin-left: 20px;
+
+        }
+        .right{
+            width: 150px;
+            height:30px;
+            position: absolute;
+            right:50px;
+            top:0;
+        }
+        #check{
+            border-top:1px solid silver;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var wrap = document.getElementById('wrap');
+            var li = wrap.getElementsByTagName('li');
+            var checkbox = wrap.getElementsByTagName('input');
+            var arrColor = ['#f5ffff','white'];
+            
+            for(var i = 0;i<li.length-1;i++){
+
+                li[i].index = i;
+                li[i].style.background = arrColor[i%arrColor.length];
+
+                li[i].onmouseover = function () {
+                    this.style.background = '#efefef';
+                }
+                li[i].onmouseout = function () {
+                    this.style.background = arrColor[this.index%arrColor.length]
+                }
+            }
+
+
+            checkbox[checkbox.length-1].onclick = function () {
+                for(var i = 0;i<checkbox.length;i++){
+                    if(checkbox[checkbox.length-1].checked){
+                        checkbox[i].checked = true;
+                    }else {
+                        checkbox[i].checked = false;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="wrap">
+        <li>
+            <input type="checkbox"><span>晴天</span>
+            <div class="right"><span>周杰伦</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>最长的电影</span>
+            <div class="right"><span>周杰伦</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>无终</span>
+            <div class="right"><span>谢春花</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>七月上</span>
+            <div class="right"><span>Jam</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>海阔天空</span>
+            <div class="right"><span>Beyond</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>不见长安</span>
+            <div class="right"><span>河图</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>方圆几里</span>
+            <div class="right"><span>薛之谦</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>老街</span>
+            <div class="right"><span>李荣浩</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>IF YOU</span>
+            <div class="right"><span>BIGBANG</span></div>
+        </li>
+        <li>
+            <input type="checkbox"><span>江南</span>
+            <div class="right"><span>林俊杰</span></div>
+        </li>
+        <li id="check">
+            <input type="checkbox"><span>全选</span>
+        </li>
+    </ul>
+
+
+</body>
+</html>
