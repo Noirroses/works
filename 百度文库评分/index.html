@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #wrap{
+            height: 25px;
+            width: 450px;
+            margin: 100px auto;
+        }
+        p,ul,li{
+            display: inline-block;
+            line-height: 25px;
+        }
+        ul{
+            height: 25px;
+            vertical-align: middle;
+        }
+        p{
+            font-size: 18px;
+        }
+        strong{
+            font-size: 18px;
+            color: darkorange;
+            margin-left: 10px;
+        }
+        li{
+            width: 20px;
+            height:20px;
+            list-style: none;
+            background: url("img/stars.png") no-repeat -38px 0px;
+            /*黄 0px 0px 灰:-39px 0px*/
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var list = document.getElementById('list');
+            var li = list.getElementsByTagName('li');
+            var text = document.getElementsByTagName('strong')[0];
+            var arrText = ['很差','较差','还行','推荐','力荐'];
+            var flag = -1;
+            for(var i = 0;i<li.length;i++) {
+                li[i].index = i;
+                li[i].onmouseover = function () {
+
+                    for(var i = 0;i<li.length;i++){ //每次移入时先清空,处理点击选完之后再修改的情况
+                        li[i].style.backgroundPositionX = '-38px';
+                        text.style.display = 'none';
+                    }
+                    flag = -1;//处理点击后而且再次鼠标移入后的鼠标移出全部清空的情况,否则flag不为-1,不会再次执行onmouseout事件
+                    var a = this.index;
+                    show(a);
+//                    for(var i = 0; i < this.index+1;i++){//变黄
+//                        li[i].style.backgroundPositionX = '0';
+//                    }
+//
+//                    for(var i = 0;i<arrText.length;i++){//后面的评价词
+//                        text.style.display= 'inline-block';
+//                        text.innerHTML = arrText[this.index];
+//                    }
+
+                };
+
+                li[i].onmouseout = function () {
+                    if(flag==-1) {//当flag=-1时说明没有点击,如果点击的话不会为-1,会为当前点击的this.index值
+                        for (var i = 0; i < this.index + 1; i++) {
+                            li[i].style.backgroundPositionX = '-38px';
+                            text.style.display = 'none';
+                        }
+                    }
+
+                };
+
+                li[i].onclick = function () {
+                    flag = this.index;//为了使点击后移出时固定,不执行onmouseout事件
+                    show(flag);
+
+//                    for(var i = 0; i < flag+1;i++){
+//                        li[i].style.backgroundPositionX = '0';
+//                    }
+//
+//                    for(var i = 0;i<arrText.length;i++){
+//                        text.style.display= 'inline-block';
+//                        text.innerHTML = arrText[flag];
+//                    }
+
+                };
+            }
+            function show(a) {
+                for(var i = 0; i < a+1;i++){
+                    li[i].style.backgroundPositionX = '0';
+                }
+
+                for(var i = 0;i<arrText.length;i++){
+                    text.style.display= 'inline-block';
+                    text.innerHTML = arrText[a];
+                }
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <p>总体评价:</p>
+    <ul id="list">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <strong>提示:点击小星星就能打分</strong>
+</div>
+</body>
+</html>
