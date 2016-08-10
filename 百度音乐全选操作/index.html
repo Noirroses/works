@@ -52,14 +52,14 @@
             
             for(var i = 0;i<li.length-1;i++){
 
-                li[i].index = i;
-                li[i].style.background = arrColor[i%arrColor.length];
+                li[i].index = i;//索引值 方便在鼠标移开时记住之前的颜色
+                li[i].style.background = arrColor[i%arrColor.length]; //i对颜色数组长度取余,可以让li按数组颜色的顺序依次进行渲染
 
                 li[i].onmouseover = function () {
                     this.style.background = '#efefef';
                 }
                 li[i].onmouseout = function () {
-                    this.style.background = arrColor[this.index%arrColor.length]
+                    this.style.background = arrColor[this.index%arrColor.length]//利用索引值 取余
                 }
             }
 
