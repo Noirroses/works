@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: url("img/5.jpg");
+        }
+    </style>
+</head>
+<body>
+    <input id="btn1" type="button" value="换肤"/>
+    <input id="btn2" type="button" value="停止"/>
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var arrUrl = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg'];
+        var bodyBg = document.body;
+        var num = 0;
+        var timer = null;// 在停止后,会清空timer;否则,停止后接着又开始执行setInterval
+
+        btn1.onclick = function () {
+
+            clearInterval( timer ); //使定时器不同步的执行,否则多次点击btn1,定时器速度会越来越快。
+
+           timer = setInterval(function () {
+                bodyBg.style.background = 'url(' + arrUrl[num] + ')';
+                num++;
+                num = num%arrUrl.length; //num 只取 1、2、3、4、5
+            },400);
+        };
+
+        btn2.onclick = function () {
+            clearInterval( timer );
+        };
+
+    </script>
+
+
+</body>
+</html>
