@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--meta http-equiv="x-ua-compatible"content="ie=7"/-->
+    <title>按钮控制商品图片上下滚动</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style:none;
+        }
+        #box{
+            /*border:1px solid #000;*/
+            width:180px;
+            height:500px;
+            margin:50px auto;
+            /*border: 1px solid red;*/
+        }
+        h2{
+            width:157px;  /*--167px--*/
+            height:19px;
+            color:#fff;
+            background:url(imgs/header.gif) no-repeat;
+            font-size:10px;
+            font-weight:normal;
+            padding:5px 0 0 10px;
+        }
+        h2 span{
+            margin-left:61px;
+        }
+        #show{
+            width:165px; /*--165px--*/
+            height:440px;
+            /*height: 2000px;*/
+            border:1px solid #ced6d6;
+            padding-bottom:4px;
+            background:url(imgs/bottom.gif) no-repeat -1px bottom;
+            position:relative;
+            overflow:hidden;
+            /*border: 1px solid red;*/
+        }
+        a{
+            text-decoration:none;
+            display:block;
+            width:165px;
+            height:22px;
+            position:absolute;
+            z-index:2;
+        }
+        #up{
+            background:#efefe7 url(imgs/up.gif) no-repeat;
+            left:0;
+            top:0;
+        }
+        #down{
+            background:#efefe7 url(imgs/down.gif) no-repeat;
+            left:0;
+            bottom:0px;
+        }
+        #up:hover{
+            background:#e7efef url(imgs/up.gif) no-repeat;
+        }
+        #down:hover{
+            background:#e7efef url(imgs/down.gif) no-repeat;
+        }
+        ul{
+            padding:0 12px;
+            width:141px;
+            font-size:12px;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        li{
+            width:141px; /*--141px--*/
+            height:98px;
+            padding-top:11px;
+            border-bottom:1px solid #c6c6ce;
+            vertical-align:top;
+            position:relative;
+        }
+        li div{
+            width:66px;
+        }
+        li img{
+            position:absolute;
+            width:75px;
+            right:0;
+            bottom:44px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var oShow = document.getElementById("show");
+            var oList = document.getElementById("list");
+            var oUp = document.getElementById("up");
+            var oDown = document.getElementById("down");
+            var timer = null;
+
+
+//            offsetTop :
+//            指 obj 距离上方或上层控件的位置
+//
+//            clientHeight:
+//            大家对 clientHeight 都没有什么异议，都认为是内容可视区域的高度，也就是说页面浏览器中可以看到内容的这个区域的高度，一般是最后一个工具条以下到状态栏以上的这个区域，与页面内容无关。
+//
+//            offsetHeight:
+//            IE、Opera 认为 offsetHeight = clientHeight + 滚动条 + 边框。
+//            NS、FF 认为 offsetHeight 是网页内容实际高度，可以小于 clientHeight。
+//
+//            scrollHeight:
+//
+//            IE、Opera 认为 scrollHeight 是网页内容实际高度，可以小于 clientHeight。
+//            NS、FF 认为 scrollHeight 是网页内容高度，不过最小值是 clientHeight
+//
+//            对某个HTML控件:
+//            offsetHeight是自身元素的高度，scrollHeight是 自身元素的高度+隐藏元素的高度。
+
+            oUp.onmousedown = function(){
+                timer = setInterval(function(){
+                    //alert(oShow.offsetHeight);//446px   #show的高度
+                    //alert(oList.offsetHeight);//904px    #oList的高度
+                    //alert(oList.scrollHeight);//880px  show和oList的总高度,随着向上滚,依次减去3,一直到446px
+                    var ooHeight = oShow.offsetHeight - oList.offsetHeight;
+                    //alert(ooHeight);//-458px
+                    if(ooHeight >= oList.offsetTop){
+                        clearInterval(timer);
+                    }else{
+                        //alert(oList.offsetTop);//从0开始依次减去3px,一直到-458px
+                        oList.style.top = oList.offsetTop - 3 + 'px';
+                    }
+                },30);
+            };
+            oUp.onmouseup = function(){
+                clearInterval(timer);
+            };
+            oDown.onmousedown = function(){
+                timer = setInterval(function(){
+                    if(oList.offsetTop >= 0){  //如果不写大于的话,会一直滚动空白位置
+                        clearInterval(timer);
+                    }else{
+                        oList.style.top = oList.offsetTop + 3 + 'px';//从-458px开始依次加上3px,一直到0px
+                    }
+                },30);
+            };
+            oDown.onmouseup = function(){
+                clearInterval(timer);
+            };
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <h2>商品展示<span>&gt;&gt;更多</span></h2>
+    <div id="show">
+        <a id="up" href="javascript:;"></a>
+        <a id="down" href="javascript:;"></a>
+        <ul id="list">
+            <li>
+                <div>
+                    <br/>
+                    <p>Mac翻新产品</p>
+                    <p>iPod翻新产品</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>翻新笔记本</p><br/><br/>
+                    <p>RMB 5,788起最多降低了35%</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>翻新台式机</p><br/>
+                    <p>RMB 7,698起最多降低了46%</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>MAC完全解析</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <br/>
+                    <p>Mac翻新产品!!!</p>
+                    <p>iPod翻新产品!!!</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>翻新笔记本</p><br/>
+                    <p>RMB 5,788起最多降低了35%</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>翻新台式机</p><br/>
+                    <p>RMB 7,698起最多降低了46%</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+            <li>
+                <div>
+                    <p>MAC完全解析</p>
+                </div>
+                <img src="imgs/0.gif" />
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

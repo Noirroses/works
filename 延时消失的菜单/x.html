@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul,ol{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+        a:hover{
+            text-decoration: underline;
+            background: #FF0;
+        }
+        #wrap{
+            width: 450px;
+            margin: 20px auto 0;
+            position: relative;
+        }
+        ul{
+            width: 100%;
+            height: 30px;
+            background: #CCC;
+        }
+        ul li{
+            float: left;
+            width: 150px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+        ul li a{
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+        ol{
+            width: 350px;
+            height: 30px;
+            background: #666;
+            position: absolute;top: 40px;
+            display: none;
+        }
+        ol li{
+            float: left;
+            width: 70px;
+            margin-right: 10px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+        ol li a{
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+        #ol1{
+            left: 0;
+        }
+        #ol2{
+            left: 150px;
+        }
+        #ol3{
+            left: 300px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("wrap");
+            var oUl = oDiv.getElementsByTagName("ul")[0];
+            var aLi = oUl.getElementsByTagName("li");
+            var aOl = oDiv.getElementsByTagName("ol");
+            var timer = null;
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index = i;
+                aOl[i].index = i;               //问题1：     这地方为什么还要对 aOl经行索引值的定义？ /*  看下边的代码 ，aOl[i].onmouseout中 同样用到了 索引啊*/
+                aLi.onmouseover = function () {
+                    for (var i = 0; i < aLi.length; i++) {
+                        aOl[i].style.display = 'none';
+                    }
+                    aOl[this.index].style.display = 'block';
+                };
+                aOl[i].onmouseout=aLi[i].onmouseout = function () {
+                    clearInterval(timer);
+                    var that = this;                      //问题2：     var that = this， 是因为下面计时器中函数的作用域原因吗？      这两个地方去掉任意一个 都会出现 style未定义。       /*  这个问题是关于 定时器中的this执行的 定时器中 this指向window*/
+                    timer=setInterval(function () {
+                        aOl[that.index].style.display = 'none';
+                    }, 1000);
+                };
+
+                aOl[i].onmouseover = function () {
+                    clearInterval(timer);
+                };
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <ul>
+        <li><a href="">首页</a></li>
+        <li><a href="">关于我们</a></li>
+        <li><a href="">作品</a></li>
+    </ul>
+    <ol id="ol1">
+        <li><a href="">秒味</a></li>
+        <li><a href="">JS课程</a></li>
+        <li><a href="">CSS课程</a></li>
+    </ol>
+    <ol id="ol2">
+        <li><a href="">简介</a></li>
+        <li><a href="">发展</a></li>
+    </ol>
+    <ol id="ol3">
+        <li><a href="">JS作品</a></li>
+        <li><a href="">CSS课程</a></li>
+        <li><a href="">CSS3课程</a></li>
+        <li><a href="">html5课程</a></li>
+    </ol>
+
+</div>
+</body>
+</html>
