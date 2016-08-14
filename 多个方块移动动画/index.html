@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var div = document.getElementsByTagName('div');
+            var len = 25;
+            var str = "";
+            var num = 0;
+            var timer =null;
+            var onOff = true;//开关控制方块是否到顶或到底
+            //生成多个小方块
+            for(var i = 0;i<len;i++){
+                str += '<div style="width: 40px;height: 40px;background: red;border-radius: 5px;position: absolute;top: 20px;left: '+ i*50 +'px;"></div>'
+            }
+            document.body.innerHTML += str;
+            //点击事件
+            document.onclick = function () {
+                if(onOff){
+                    dirOnOff(700,false);
+                }else {
+                    dirOnOff(20,true);
+                }
+
+            }
+            //控制开关和方块动画函数,到顶或到底时控制开关的变化达到循环的效果。
+            function dirOnOff(target,oo) {
+                clearInterval(timer);
+                timer = setInterval(function () {
+
+                    moveFn(div[num],'top',12,target);
+                    num++;
+                    if(num == div.length){
+                        clearInterval(timer);
+                        onOff = oo;
+                        num = 0;
+                    }
+                },50)
+            }
+
+        }
+        //方块运动函数
+        function moveFn(obj,attr,dir,target,endFn) {
+            dir = parseInt(getStyle(obj,attr))<target?dir:-dir;
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var speed = parseInt(getStyle(obj,attr)) + dir;
+                if(speed > target && dir>0 ||speed < target && dir<0){
+                    speed =target;
+                }
+                obj.style[attr] = speed + 'px';
+                if(speed == target){
+                    clearInterval(obj.timer);
+                    if(endFn){
+                        endFn();
+                    }
+                }
+
+
+            },30);
+        }
+        //获取元素属性兼容函数
+        function getStyle(obj,attr) {
+            return obj.currentStyle?obj.currentStyle:getComputedStyle(obj)[attr];
+        }
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
