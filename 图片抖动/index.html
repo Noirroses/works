@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+    <script>
+
+
+        function shake(obj,attr,endFn) {
+
+            var pos = parseInt(getStyle(obj,attr));
+            var arr = [];
+            var num = 0;
+
+            // 修复抖的bug,当对象在抖动时，鼠标移入无效，当对象抖动停止时，才可以继续触发抖动过程。
+            if ( obj.onOff ){      //如果为true符合条件,则不执行if语句后面的所有代码
+                return;
+            }
+
+//            retrun true； 返回正确的处理惩罚成果。
+//
+//            return false；返回错误的处理惩罚成果；终止处理惩罚；阻拦提交表单；阻拦履行默认的行动。
+//
+//            return；把把握权返回给页面。终止函数执行。
+
+            obj.onOff = true;
+
+
+            for(var i = 20;i>0;i-=2){
+                arr.push(i,-i);
+            }
+            arr.push(0);
+
+            clearInterval(obj.shake);
+            obj.shake = setInterval(function () {
+                obj.style[attr] = pos + arr[num] + 'px';
+                num++;
+                if(num==arr.length){
+                    clearInterval(obj.shake);
+
+                    obj.onOff = false;
+
+                    if(endFn){
+                        endFn();
+                    }
+                }
+            },60);
+
+        }
+
+        function getStyle(obj,attr) {
+            return obj.currentStyle?obj.currentStyle:getComputedStyle(obj)[attr];
+        }
+
+        window.onload=function () {
+
+            var img = document.getElementsByTagName('img');
+
+            for(var i = 0;i<img.length;i++){
+                img[i].style.left = 200+i*120 +'px';
+                img[i].onmouseover = function () {
+                    shake(this,'top');
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+    <img src="img/4.jpg">
+    <img src="img/5.jpg">
+    <img src="img/6.jpg">
+    <img src="img/7.jpg">
+    <img src="img/8.jpg">
+
+</body>
+</html>

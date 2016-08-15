@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        body { background:#f1f1f1; }
+        ul { margin:0; padding:0; list-style:none; }
+        #tab { width:500px; border:1px solid #333; margin:20px auto 0; padding:10px; background:#fff; font-size:14px; font-family:微软雅黑; }
+        #tab .nav { height:30px; }
+        #tab .nav li { width:80px; height:30px; text-align:center; line-height:30px; margin-right:1px; float:left; background:#f1f1f1; }
+        #tab .nav .active { background:#9FC; color:#fff; }
+
+        #tab .box { width:500px; height:180px; padding-top:1px; display:none; }
+        #tab .box img { width:400px; height:178px; float:left; }
+        #tab .box ul { width:100px; float:right; }
+        #tab .box li { height:29px; line-height:29px; background:#f1f1f1; text-indent:20px; margin-bottom:1px; }
+        #tab .box .active { background:#69C; color:#fff; }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('tab');
+            var oUl = oDiv.getElementsByTagName('ul')[0];
+            var aBtn = oUl.getElementsByTagName('li');
+            var aDiv = oDiv.getElementsByTagName('div');
+
+            var iNow = 0;                                // 让哪一个div开始……
+            var num = 0;                                // 到底是哪一个li开始……
+
+            var arr = [
+                [ 'img/1.jpg', 'img/2.jpg', 'img/3.jpg','img/6.jpg','img/1.jpg','img/5.jpg'],
+                [ 'img/3.jpg','img/4.jpg', 'img/2.jpg', 'img/6.jpg','img/5.jpg','img/4.jpg' ]
+            ];
+
+            aDiv[iNow].style.display = 'block';
+
+            setInterval(function () {
+                num++;
+                if ( num === aDiv[iNow].getElementsByTagName('li').length ) {
+                    num = 0;
+                    iNow = iNow==0?1:0;
+                }
+
+                for ( var i=0; i<aDiv.length; i++ ) {
+                    aDiv[i].style.display = 'none';
+                    aBtn[i].className = '';
+                }
+                aDiv[iNow].style.display = 'block';
+                aBtn[iNow].className = 'active';
+
+                fnTab( num, iNow );
+
+
+            }, 1000);
+
+            function fnTab ( n, index ) {
+                var aLi = aDiv[index].getElementsByTagName('li');
+                var oImg = aDiv[index].getElementsByTagName('img')[0];
+
+                for ( var i=0; i<aLi.length; i++ ) {
+                    aLi[i].className = '';
+                }
+                aLi[n].className = 'active';
+                oImg.src = arr[index][n];
+            }
+
+        };
+    </script>
+
+</head>
+
+<body>
+
+<div id="tab">
+    <ul class="nav">
+        <li class="active">菜单一</li>
+        <li>菜单二</li>
+    </ul>
+    <div class="box">
+        <img src="img/1.jpg" />
+        <ul>
+            <li class="active">图片1</li>
+            <li>图片2</li>
+            <li>图片3</li>
+            <li>图片4</li>
+            <li>图片5</li>
+            <li>图片6</li>
+        </ul>
+    </div>
+    <div class="box">
+        <img src="img/4.jpg" />
+        <ul>
+            <li class="active">图片7</li>
+            <li>图片8</li>
+            <li>图片9</li>
+            <li>图片10</li>
+            <li>图片11</li>
+            <li>图片12</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
