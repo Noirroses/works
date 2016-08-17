@@ -14,25 +14,18 @@
         window.onload = function(){
 
             var aLi = document.getElementsByTagName('li');
-            var arrmao = ['img/colon.JPG','img/colon1.JPG'];
+        
             var aMao = document.getElementsByClassName('mao');
             var aShow = document.getElementsByClassName('show');
             var arrImg = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/8.JPG','img/9.JPG'];
-            var num = 0;
+            
             var Off=true;
 
             for(var i=0; i<aLi.length; i++){
                 aLi[i].style.left = i*125+ 'px';
             }
 
-            //冒号闪烁
-            function maohao(){
-                aMao[0].src = arrmao[num%arrmao.length];
-                aMao[1].src = arrmao[num%arrmao.length];
-                num++;
-            }
-            maohao();
-            setInterval(maohao,500);
+        
 
             //初始化
             function showTime(){
