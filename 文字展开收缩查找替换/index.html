@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            width: 300px;
+            border: 5px solid skyblue;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: "Microsoft YaHei";
+            font-size: 14px;
+            position: relative;
+        }
+        ul,li{
+            list-style: none;
+        }
+        ul{
+            width: 60px;
+            height: 120px;
+            position: absolute;
+            top:40px;
+            left: 890px;
+        }
+        li{
+            width: 60px;
+            height: 40px;
+            background:skyblue;
+            font-size: 20px;
+            color:#333;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+        li:hover{
+            background: slateblue;
+            color: white;
+        }
+        #oList{
+            display: none;
+        }
+        span{
+            background: fuchsia;
+        }
+        #box{
+            width: 600px;
+            height: 140px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 3px solid skyblue;
+            margin: 0px auto;
+            display: none;
+        }
+        #findname,#replacename{
+            width: 50px;
+            height: 30px;
+            background: skyblue;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            float: left;
+            cursor: pointer;
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            outline: none;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+        }
+        #findbox{
+            margin-top:50px;
+            margin-left: 150px;
+            display: none;
+        }
+        #replacebox{
+            margin-top:50px;
+            margin-left: 50px;
+            display: none;
+        }
+        #close{
+            width:30px;
+            height: 30px;
+            background: skyblue;
+            float: right;
+            font-size: 23px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var content = document.getElementById('content');
+            var open = document.getElementById('open');
+            var shrink = document.getElementById('shrink');
+            var find = document.getElementById('find');
+            var replace = document.getElementById('replace');
+            var box = document.getElementById('box');
+            var findbox = document.getElementById('findbox');
+            var replacebox = document.getElementById('replacebox');
+            var findtext = document.getElementById('findtext');
+            var oldRepalcetext = document.getElementById('oldRepalcetext');
+            var newRepalcetext = document.getElementById('newRepalcetext');
+            var findbtn = document.getElementById('findbtn');
+            var replacebtn = document.getElementById('replacebtn');
+            var findname = document.getElementById('findname');
+            var replacename = document.getElementById('replacename');
+            var close = document.getElementById('close');
+            var oList = document.getElementById('oList');
+            var sList = document.getElementById('sList');
+            var str = content.innerHTML;
+            var onOff = true;
+
+            shrink.onclick = function () {
+                content.innerHTML = str.substring(0,58)+'...';
+                oList.style.display = 'block';
+                sList.style.display = 'none';
+            }
+
+            open.onclick = function () {
+                content.innerHTML = str;
+                oList.style.display = 'none';
+                sList.style.display = 'block';
+            }
+
+            find.onclick = function () {
+                box.style.display = 'block';
+                replacebox.style.display = 'none';
+                findbox.style.display = 'block';
+                replacename.style.background = 'skyblue';
+                findname.style.background = 'cyan';
+
+            }
+
+            replace.onclick = function () {
+                box.style.display = 'block';
+                findbox.style.display = 'none';
+                replacebox.style.display = 'block';
+                findname.style.background = 'skyblue';
+                replacename.style.background = 'cyan';
+
+
+            }
+            findbtn.onclick = function () {
+                var findtext1 = findtext.value;
+                if (!findtext1){
+                    alert('请输入字符');
+                }
+                if(str.indexOf(findtext1)==-1){
+                    alert('输入的字符不在范围内');
+                }
+                content.innerHTML = str.split(findtext1).join('<span>'+findtext1+'</span>');
+            }
+
+
+            replacebtn.onclick = function () {
+                var replacetext1 = oldRepalcetext.value;
+                var replacetext2 = newRepalcetext.value;
+                if (!replacetext1){
+                    alert('请输入字符');
+                }
+                if(str.indexOf(replacetext1)==-1){
+                    alert('输入的字符不在范围内');
+                }
+                if(!replacetext2){
+                    confirm('确定要删除字符:['+replacetext1+']吗?');
+                }
+                content.innerHTML = content.innerHTML.split(replacetext1).join('<span>'+replacetext2+'</span>');
+            }
+            close.onclick = function () {
+                box.style.display = 'none';
+
+            }
+            findname.onclick = function () {
+                replacebox.style.display = 'none';
+                replacename.style.background = 'skyblue';
+                findbox.style.display = 'block';
+                findname.style.background = 'cyan';
+            }
+            replacename.onclick = function () {
+                findbox.style.display = 'none';
+                findname.style.background = 'skyblue';
+                replacebox.style.display = 'block';
+                replacename.style.background = 'cyan';
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+                本周早些时候，一个自称为“影子经纪人”的黑客团体宣布它将以拍卖的方式出售大量网络攻击工具，据说这些网络攻击工具是它攻破了美国国家安全局（NSA）旗下的一个名为“方程式组织”（The Equation Group）后窃取来的。
+        除了NSA遭到黑客攻击这件事本身有些出人意料之外，这个神秘的黑客组织泄露的数据以及它自称这样做的目的是为了赚钱似乎都不太可信。
+        他们声称攻破了隶属于NSA的一台服务器，但是这种说法有些可疑
+        据以前曾在NSA工作过的一名知情人士透露，NSA的黑客不会将他们使用的网络攻击工具放在网上，因为那有可能被窃。这位名叫戴夫·艾特尔（Dave Aitel）的前NSA研究科学家称，更有可能的情况是：NSA的一名内部工作人员将数据下载到一个U盘上带出来。
+        艾特尔认为，这不能算是“网络攻击”行为，只能算是盗窃行为。
+    </div>
+    <ul id="sList">
+        <li id="shrink">收缩</li>
+        <li id="find">查找</li>
+        <li id="replace">替换</li>
+    </ul>
+    <ul id="oList">
+        <li id="open">展开</li>
+    </ul>
+    <div id="box">
+        <div id="findname">查找</div>
+        <div id="replacename">替换</div>
+        <div id="close">x</div>
+
+        <div id="findbox">
+            <input id="findtext" type="text" placeholder="输入需要查找的文字">
+            <button id="findbtn">开始查找</button>
+        </div>
+        <div id="replacebox">
+            <input id="oldRepalcetext" type="text" placeholder="输入需要替换的文字">
+            <input id="newRepalcetext" type="text" placeholder="输入想要替换的文字">
+            <button id="replacebtn">替换</button>
+        </div>
+
+    </div>
+</body>
+</html>

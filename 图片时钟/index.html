@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var img = document.getElementsByClassName('num');
+            setInterval(function () {
+                var time = new Date();
+                var hours = time.getHours();
+                var minutes = time.getMinutes();
+                var seconds = time.getSeconds();
+                var str = toTwo(hours)+toTwo(minutes)+toTwo(seconds);
+                alert(str)
+                for ( var i=0; i<str.length; i++ ) {
+                    img[i].src = 'img/' + str.charAt(i) + '.JPG';
+                }
+            },1000);
+
+
+        }
+        function toTwo(a) {
+            return a>=10?''+a:'0'+a;
+        }
+    </script>
+</head>
+<body>
+    <img class="num" src="img/0.JPG">
+    <img class="num" src="img/0.JPG">
+    <img class="point" src="img/colon.JPG">
+    <img class="num" src="img/0.JPG">
+    <img class="num" src="img/0.JPG">
+    <img class="point" src="img/colon.JPG">
+    <img class="num" src="img/0.JPG">
+    <img class="num" src="img/0.JPG">
+</body>
+</html>
