@@ -1,38 +1,127 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script>
-        window.onload = function () {
-            var img = document.getElementsByClassName('num');
-            setInterval(function () {
-                var time = new Date();
-                var hours = time.getHours();
-                var minutes = time.getMinutes();
-                var seconds = time.getSeconds();
-                var str = toTwo(hours)+toTwo(minutes)+toTwo(seconds);
-                alert(str)
-                for ( var i=0; i<str.length; i++ ) {
-                    img[i].src = 'img/' + str.charAt(i) + '.JPG';
-                }
-            },1000);
+    <title>Document</title>
+    <style type="text/css">
+        *{margin:0; padding:0; list-style: none;}
+        ul{ position: relative; overflow: hidden; height: 172px;}
+        ul li{position: absolute; left:0; top:0; width:122px; height: 344px;}
+    </style>
+    <script type="text/javascript" src="miaov.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
 
+            var aLi = document.getElementsByTagName('li');
+            var arrmao = ['img/colon.JPG','img/colon1.JPG'];
+            var aMao = document.getElementsByClassName('mao');
+            var aShow = document.getElementsByClassName('show');
+            var arrImg = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/8.JPG','img/9.JPG'];
+            var num = 0;
+            var Off=true;
+
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].style.left = i*125+ 'px';
+            }
+
+            //冒号闪烁
+            function maohao(){
+                aMao[0].src = arrmao[num%arrmao.length];
+                aMao[1].src = arrmao[num%arrmao.length];
+                num++;
+            }
+            maohao();
+            setInterval(maohao,500);
+
+            //初始化
+            function showTime(){
+
+                var myTime = new Date();
+                var iHour = myTime.getHours();
+                var iMin = myTime.getMinutes();
+                var iSec = myTime.getSeconds();
+                // var str=''
+                str = toTwo(iHour)+toTwo(iMin)+toTwo(iSec);//144507
+
+                if(Off){
+
+                    for(var i=0;i<aShow.length;i++){
+
+                        var aImg = aShow[i].getElementsByTagName('img');
+                        aImg[0].src = arrImg[str.charAt(i)];//每个li的第一个img,就是第一行的原始时间
+                        aShow[i].num = parseInt(str.charAt(i));
+                        aShow[i].index = i;
+
+                    }
+                    Off = false;
+                }
+
+
+
+                for(var i=0;i<aShow.length;i++){
+
+                    move(aShow[i]);//5
+                }
+
+                //因为定时器每隔一秒执行一次，所有每次获取到的时间是动态的
+                function move(obj){
+
+                    var aImg =obj.getElementsByTagName('img');
+                    obj.num1 = parseInt(str.charAt(obj.index));
+                    aImg[1].src = arrImg[str.charAt(obj.index)];
+                    if(obj.num1 != obj.num){
+                        doMove(obj,'top',10,-172,function(){
+                            obj.style.top='';
+                            obj.num = obj.num1;
+                            aImg[0].src = arrImg[str.charAt(obj.index)];
+                        });
+                    }
+                }
+
+            }
+            showTime();
+            setInterval(showTime,1000);
 
         }
-        function toTwo(a) {
-            return a>=10?''+a:'0'+a;
+
+        function toTwo ( n ) {
+            return n < 10 ?  '0' + n : '' + n;
         }
     </script>
 </head>
 <body>
-    <img class="num" src="img/0.JPG">
-    <img class="num" src="img/0.JPG">
-    <img class="point" src="img/colon.JPG">
-    <img class="num" src="img/0.JPG">
-    <img class="num" src="img/0.JPG">
-    <img class="point" src="img/colon.JPG">
-    <img class="num" src="img/0.JPG">
-    <img class="num" src="img/0.JPG">
+<ul>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+    <li>
+        <img src="img/colon.JPG" class="mao">
+    </li>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+    <li>
+        <img src="img/colon.JPG" class="mao">
+    </li>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+    <li class="show">
+        <img src="img/0.JPG">
+        <img src="img/0.JPG">
+    </li>
+</ul>
 </body>
 </html>
