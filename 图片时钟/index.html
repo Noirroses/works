@@ -32,7 +32,7 @@
             var aMao = document.getElementsByClassName('mao');
             var aShow = document.getElementsByClassName('show');
             var arrImg = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/8.JPG','img/9.JPG'];
-            var num = 0;
+         
             var Off=true;
 
             for(var i=0; i<aLi.length; i++){
@@ -41,9 +41,12 @@
 
             //冒号闪烁
             function maohao(){
-                aMao[0].src = arrmao[num%arrmao.length];
-                aMao[1].src = arrmao[num%arrmao.length];
-                num++;
+                for(var i=0;i<2;i++){
+                    aMao[0].src = arrmao[i%arrmao.length];
+                    aMao[1].src = arrmao[i%arrmao.length];
+                    i++;
+                }
+                
             }
             maohao();
             setInterval(maohao,500);
