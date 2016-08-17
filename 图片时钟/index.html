@@ -5,25 +5,11 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style type="text/css">
-        *{
-            margin:0; 
-            padding:0; 
-            list-style: none;
-        }
-        ul{ 
-            position: relative; 
-            overflow: hidden; 
-            height: 172px;
-        }
-        ul li{
-            position: absolute; 
-            left:0; 
-            top:0; 
-            width:122px; 
-            height: 344px;
-        }
+        *{margin:0; padding:0; list-style: none;}
+        ul{ position: relative; overflow: hidden; height: 172px;}
+        ul li{position: absolute; left:0; top:0; width:122px; height: 344px;}
     </style>
-    <script type="text/javascript" src="my.js"></script>
+    <script type="text/javascript" src="miaov.js"></script>
     <script type="text/javascript">
         window.onload = function(){
 
@@ -32,7 +18,7 @@
             var aMao = document.getElementsByClassName('mao');
             var aShow = document.getElementsByClassName('show');
             var arrImg = ['img/0.JPG','img/1.JPG','img/2.JPG','img/3.JPG','img/4.JPG','img/5.JPG','img/6.JPG','img/7.JPG','img/8.JPG','img/9.JPG'];
-         
+            var num = 0;
             var Off=true;
 
             for(var i=0; i<aLi.length; i++){
@@ -41,12 +27,9 @@
 
             //冒号闪烁
             function maohao(){
-                for(var i=0;i<2;i++){
-                    aMao[0].src = arrmao[i%arrmao.length];
-                    aMao[1].src = arrmao[i%arrmao.length];
-                    i++;
-                }
-                
+                aMao[0].src = arrmao[num%arrmao.length];
+                aMao[1].src = arrmao[num%arrmao.length];
+                num++;
             }
             maohao();
             setInterval(maohao,500);
