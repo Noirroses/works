@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1 {width: 100px; height: 100px; background:red;border-radius: 5px; position: absolute; z-index: 2;}
+#img1 { position: absolute; left: 500px; top: 200px;}
+</style>
+<script>
+window.onload = function() {
+	
+	var oDiv = document.getElementById('div1');
+	var oImg = document.getElementById('img1');
+	
+	drag(oDiv);
+	
+	function drag(obj) {
+		
+		obj.onmousedown = function(ev) {
+			var ev = ev || event;
+			
+			var disX = ev.clientX - this.offsetLeft;//此时方块还没动，求得鼠标位置距离方块左边的直线距离
+			var disY = ev.clientY - this.offsetTop;
+			
+			if ( obj.setCapture ) {//阻止IE浏览器的默认拖拽行为
+				obj.setCapture();
+			}
+			
+			document.onmousemove = function(ev) {//对全部文档设置该事件，鼠标在文档中移动不受其他元素影响
+				
+				var ev = ev || event;//获取事件对象的兼容
+				
+				var L = ev.clientX - disX; //在方块移动过程中，鼠标的可视距左距离 减去 初始位置鼠标位置距离方块左边的直线距离 就是方块左边距左距离
+				var T = ev.clientY - disY;
+				
+				//L1:方块的左边距浏览器左边的距离
+				//R1:方块的右边距浏览器左边的距离
+				//T1:方块的上边距浏览器上边的距离
+				//B1:方块的下边距浏览器上边的距离
+				var L1 = L; 
+				var R1 = L + obj.offsetWidth;
+				var T1 = T;
+				var B1 = T + obj.offsetHeight;
+				//L2:图像的左边距浏览器左边的距离
+				//R2:图像的右边距浏览器左边的距离
+				//T2:图像的上边距浏览器上边的距离
+				//B2:图像的下边距浏览器上边的距离
+				var L2 = oImg.offsetLeft;
+				var R2 = L2 + oImg.offsetWidth;
+				var T2 = oImg.offsetTop;
+				var B2 = T2 + oImg.offsetHeight;
+				
+				if ( R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2 ) {//没碰撞时
+					oImg.src = '1.jpg';//黑白
+				} else {//碰撞时
+					oImg.src = '2.jpg';//彩色
+				}
+				
+				obj.style.left = L + 'px';//方块跟随鼠标位置移动
+				obj.style.top = T + 'px';
+				
+			}
+			
+			document.onmouseup = function() {
+				document.onmousemove = document.onmouseup = null;
+				if ( obj.releaseCapture ) {    //释放全局捕获 
+					obj.releaseCapture();
+				}
+			}
+			
+			return false; //阻止标准浏览器的默认拖拽行为
+			
+		}
+		
+	}
+	
+}
+</script>
+</head>
+
+<body>
+	<div id="div1"></div>
+    <img src="1.jpg" id="img1" />
+</body>
+</html>
