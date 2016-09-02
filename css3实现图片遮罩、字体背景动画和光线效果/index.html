@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 800px;
+            height: 800px;
+            background: url("img/1.jpg") no-repeat;
+            -webkit-background-size:cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -webkit-mask:url("img/mask.png") no-repeat;
+            mask:url("img/mask.png") no-repeat;
+            -webkit-transition: 2s;
+            -moz-transition: 2s;
+            -o-transition: 2s;
+            transition: 2s;
+        }
+        .box:hover{
+            -webkit-mask-position: 100% 100%;
+            mask-position: 100% 100%;
+        }
+        .fontBox{
+            width: 300px;
+            height: 300px;
+            border: 10px solid rgba(0,0,0,0.5);
+            position: absolute;
+            top:20px;
+            right: 20px;
+            background: url("img/1.jpg") no-repeat;
+            font:bold 120px/150px "Microsoft YaHei";
+            text-align: center;
+            color: rgba(0,0,0,0);
+            -webkit-background-clip: text;
+            -webkit-transition: 3s;
+            -moz-transition: 3s;
+            -o-transition: 3s;
+            transition: 3s;
+        }
+        .fontBox:hover{
+            background-position: 100% 100%;
+        }
+        .lightBox{
+            width: 320px;
+            height: 100px;
+            text-align: center;
+            background: black;
+            font:bold 50px/100px "Microsoft YaHei";
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            position: absolute;
+            top: 400px;
+            right: 20px;
+        }
+        .lightFont{
+            display: inline-block;
+            color:rgba(255,255,255,0.3);
+            background: linear-gradient(-300deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 180px,rgba(255,255,255,1) 240px,rgba(255,255,255,0) 320px) -320px 0 no-repeat;
+            -webkit-background-clip:text;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    <div class="fontBox">你好世界</div>
+    <div class="lightBox">
+        <p class="lightFont">maolove.cn</p>
+    </div>
+    <script>
+        var oP=document.getElementsByTagName("p")[0];
+        var oTimer=null;
+        var iLeft=-320;
+        function toMove()
+        {
+            clearInterval(oTimer);
+            oTimer=setInterval(function(){
+                iLeft+=10;
+                if(iLeft==320)
+                {
+
+                    clearInterval(oTimer);
+                    iLeft=-320;
+                }
+                oP.style.backgroundPosition=iLeft+"px 0px";
+
+            },20);
+        }
+        toMove();
+        setInterval(function(){
+            toMove();
+        },1000);
+    </script>
+</body>
+</html>
