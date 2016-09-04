@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            border: 1px dashed skyblue;
+            background:#f9f9f9;
+            position: relative;
+        }
+        #menu{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #menu_list{
+            height:42px;
+            width:42px;
+            position:absolute;
+            margin:4px;
+        }
+        #menu_list img{
+            border-radius:21px;
+            position:absolute;
+            left:0;
+            top:0;
+            transition: 0.5s ease;
+        }
+        #home{
+            width: 50px;
+            height: 50px;
+            background: url("img/home.png") no-repeat;
+            border-radius:25px;
+            position: absolute;
+            left:0;
+            top:0;
+            transition: 1s;
+        }
+
+
+    </style>
+    <script>
+        window.onload = function () {
+            var oHome = document.getElementById('home');
+            var oImg = document.getElementById('menu_list').getElementsByTagName('img');
+            var onOff = true;
+            var r = -150;
+            for(var i = 0;i<oImg.length;i++){
+                oImg[i].onclick = function () {
+                    this.style.transition="0.3s";
+                    this.style.webkitTransform = 'scale(2) rotate(-720deg)';
+                    this.style.opacity=0.1;
+                    addEnd(this,end);
+                }
+            }
+            function end() {
+
+                this.style.transition="0.3s";
+                this.style.webkitTransform = 'scale(1) rotate(-720deg)';
+                this.style.opacity=1;
+                removeEnd(this,end);
+
+            }
+            oHome.onclick = function () {
+
+                if(onOff){
+                    this.style.webkitTransform = 'rotate(-360deg)';
+                    for(var i = 0; i < oImg.length;i++){
+                        var deg = 90/4*i;
+                        oImg[i].style.transition = '0.5s '+ i*100 + 'ms';
+                        oImg[i].style.left = toLT(r,deg).l + 'px';
+                        oImg[i].style.top = toLT(r,deg).t + 'px';
+                        oImg[i].style.webkitTransform = 'scale(1) rotate(-720deg)';
+                    }
+                }else {
+                    this.style.WebkitTransform = 'rotate(360deg)';
+                    for(var i = 0; i < oImg.length;i++){
+                        var deg = 90/4*i;
+                        oImg[i].style.transition = '0.5s '+ (oImg.length-i-1)*100+'ms';
+                        oImg[i].style.left = 0 + 'px';
+                        oImg[i].style.top = 0 + 'px';
+                        oImg[i].style.webkitTransform = 'scale(1) rotate(720deg)';
+
+                    }
+                }
+                onOff = !onOff;
+            };
+
+
+        }
+        function toLT(r,deg) {
+
+            return {
+                l:Math.round(Math.sin(deg/180*Math.PI)*r),
+                t:Math.round(Math.cos(deg/180*Math.PI)*r)
+            }
+        }
+        function addEnd(obj,fn) {
+            obj.addEventListener('WebkitTransitionEnd',fn,false);
+            obj.addEventListener('transitionend',fn,false);
+        }
+        function removeEnd(obj,fn)
+        {
+            obj.removeEventListener('WebkitTransitionEnd',fn,false);
+            obj.removeEventListener('transitionend',fn,false);
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="menu">
+            <div id="menu_list">
+                <img src="img/prev.png" alt=""/>
+                <img src="img/open.png" alt="" />
+                <img src="img/clos.png" alt="" />
+                <img src="img/full.png" alt="" />
+                <img src="img/refresh.png" alt="" />
+            </div>
+            <div id="home"></div>
+        </div>
+    </div>
+</body>
+</html>
