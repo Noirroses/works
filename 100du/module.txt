@@ -1,0 +1,57 @@
+
+
+布局模块:
+
+header
+
+nav
+
+search
+
+main
+
+    section
+
+    options
+
+    ad_main
+
+side
+
+    section_side
+
+    ad_side
+
+
+
+
+
+
+
+
+
+
+公共样式:
+
+*初始化
+
+浮动
+float left
+float right
+
+清除浮动clear
+
+渐变 css3
+
+    标准浏览器支持
+    不标准的IE7以下就不渐变,给个背景色就行,优雅降级
+
+圆角 border-radius
+
+
+
+
+
+
+
+
