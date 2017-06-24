@@ -1,0 +1,196 @@
+body{
+	background: #f5f5f5;
+}
+/**
+ * header 
+ */
+.navbar-wrapper,.navbar,.container{
+	width: 100%;
+	height: 74px;
+	padding: 0;
+}
+.others i{
+	width: 10px;
+	height: 20px;
+	display: block;
+	font-size: 24px;
+}
+.others span{
+	display: block;
+	font-size: 12px;
+}
+/**
+ * layout 
+ */
+.app{
+	width: 96%;
+	height: 430px;
+	background: #ffffff;
+	position: relative;
+	margin: 0 auto;
+}
+.app_main{
+	width: 60%;
+	height: 430px;
+	padding-left: 45px;
+}
+.app_side{
+	width: 33%;
+	height: 430px;
+}
+.app_my{
+	height: 240px;
+
+}
+.app_shop{
+	height: 174px;
+
+}
+.app_notice{
+	height: 248px;
+	padding-right: 20px;
+}
+.app_slider{
+	height: 166px;
+
+}
+.question{
+	width: 96%;
+	height: 260px;
+	background: #FFFFFF;
+	position: relative;
+	margin: 20px auto 0 auto;
+
+}
+.question_ylh{
+	width: 43%;
+	height: 260px;
+	padding-left: 45px;
+
+}
+.question_tv{
+	width: 43%;
+	height: 260px;
+	padding-right: 20px;
+
+}
+/**
+ * app_my 
+ */
+.app_my h2{
+	line-height: 40px;
+	color: #02aedc;
+}
+#app_list{
+	width: 100%;
+}
+#app_list li{
+	width: 30%;
+	height: 132px;
+	border: 1px solid #dadada;
+	float: left;
+	margin-right: 18px;
+	text-align: center;
+	padding-top: 30px;
+}
+#app_list .active{
+	box-shadow: 5px 5px 5px #dfdfdf;
+}
+#app_list a{
+	width: 104px;
+	height: 32px;
+	margin: 20px auto;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+#app_list span{
+	display: block;
+}
+
+/**
+ * app_shop 
+ */
+.app_shop h2{
+	line-height: 40px;
+	color: #02aedc;
+}
+#shop_list{
+	width: 100%;
+	list-style: ;
+}
+#shop_list li{
+	width: 242px;
+	height: 126px;
+	padding: 25px 0 0 15px;
+	float: left;
+}
+#shop_list .app_box{
+	width: 60px;
+	height: 60px;
+	padding: 6px;
+	background: #ebf9fc;
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 800;
+}
+/**
+ * app_notice 
+ */
+.notice_list{
+	width: 100%;
+	height: 200px;
+}
+.app_notice p{
+	margin: 0;
+}
+.notice_list li{
+	margin-top: 6px;
+}
+.app_notice .title{
+	width: 100%;
+	height: 45px;
+	line-height: 40px;
+	display: block;
+}
+/**
+ * app_slider 
+ */
+
+
+
+/**
+ * question 
+ */
+.question .title{
+	margin-top: 10px;
+	width: 100%;
+	height: 45px;
+	line-height: 40px;
+	display: block;
+}
+.question p{
+	margin: 0;
+}
+.question_list span{
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	border: 1px solid #f5f5f5;
+	text-align: center;
+}
+.question_list li{
+	margin-top: 6px;
+}
+/**
+ * footer 
+ */
+
+.footer{
+	width: 100%;
+	height: 78px;
+	line-height: 78px;
+	text-align: center;
+	font-size: 14px;
+	color: #333;
+}
